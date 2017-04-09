@@ -1,0 +1,8 @@
+/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/test/jvm/org/apache/storm/starter/bolt/RollingCountBoltTest.java
+/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/test/jvm/org/apache/storm/starter/tools/SlotBasedCounterTest.java
+/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/test/jvm/org/apache/storm/starter/bolt/IntermediateRankingsBoltTest.java
+/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/test/jvm/org/apache/storm/starter/tools/RankingsTest.java
+/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/test/jvm/org/apache/storm/starter/bolt/TotalRankingsBoltTest.java
+/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/test/jvm/org/apache/storm/starter/tools/RankableObjectWithFieldsTest.java
+/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/test/jvm/org/apache/storm/starter/tools/SlidingWindowCounterTest.java
+/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/test/jvm/org/apache/storm/starter/tools/NthLastModifiedTimeTrackerTest.java

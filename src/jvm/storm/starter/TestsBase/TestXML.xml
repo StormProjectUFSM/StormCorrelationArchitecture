@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<politicsConf>
+	<basicInfo>
+		<flow></flow>
+		<correlation></correlation>
+		<action></action>
+	</basicInfo>
+	<correlationInfo>
+		<ipIn>192.168.0.10</ipIn>
+		<ipOut>192.168.0.15</ipOut>
+		<eventAmount>20</eventAmount>
+	</correlationInfo>
+	<actionInfo>
+		<logLocal>/home/storm/Log.txt</logLocal>
+		<email>stormprojectufsm@gmail.com</email>
+	</actionInfo>
+</politicsConf>
