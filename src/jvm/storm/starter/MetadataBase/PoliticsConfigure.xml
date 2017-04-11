@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<politicsConf>
+	<confID>ConfTeste</confID>
+	<basicInfo>
+		<flow>flowteste</flow>
+		<correlation>correlationteste</correlation>
+		<action>actionteste</action>
+	</basicInfo>
+	<correlationInfo>
+		<ipList>
+			<ip>192.168.0.1</ip>
+			<ip>192.168.0.2</ip>
+			<ip>192.168.0.3</ip>
+		</ipList>
+		<timeMSAmount>7000</timeMSAmount>
+		<eventsAmount>10</eventsAmount>
+	</correlationInfo>
+	<actionInfo>
+		<logLocal>/home/storm</logLocal>
+		<email>storm@storm.com.br</email>
+	</actionInfo>
+</politicsConf>

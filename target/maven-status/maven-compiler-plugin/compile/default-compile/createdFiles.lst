@@ -111,6 +111,7 @@ org/apache/storm/starter/tools/SlotBasedCounter.class
 org/apache/storm/starter/bolt/SingleJoinBolt.class
 org/apache/storm/starter/FastWordCountTopology$SplitSentence.class
 org/apache/storm/starter/trident/TridentMinMaxOfVehiclesTopology$EfficiencyComparator.class
+storm/starter/AlgorithmBase/PoliticsXML.class
 org/apache/storm/starter/trident/TridentMapExample$3.class
 org/apache/storm/starter/bolt/SingleJoinBolt$1.class
 org/apache/storm/starter/trident/TridentMinMaxOfVehiclesTopology$Vehicle.class

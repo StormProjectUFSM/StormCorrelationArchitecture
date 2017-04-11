@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import storm.starter.AlgorithmBase.PoliticsXML;
+
 import org.apache.storm.tuple.Fields;
 import org.apache.storm.tuple.Values;
 import org.apache.storm.task.OutputCollector;
@@ -16,6 +18,7 @@ import org.apache.storm.topology.OutputFieldsDeclarer;
 import org.apache.storm.tuple.Tuple;
 
 public class CompressionBolt implements IRichBolt {
+   private PoliticsXML configuration;
    private long startTime, emissionFrequency;
    private String metadataOutPath;
    private List<String> compressMap;
@@ -26,7 +29,7 @@ public class CompressionBolt implements IRichBolt {
         FileWriter finserter = new FileWriter(new File(this.metadataOutPath));
         finserter.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<elementList>");
         for(String IP : compressMap){
-            finserter.write("\n<element>\n      <ip>" + IP + "</ip>\n</element>");
+            finserter.write("\n<element>\n      <ip>" + IP + "</ip>\n       <counter></counter>\n</element>");
         }
         finserter.write("\n</elementList>");
         finserter.close();
@@ -40,9 +43,10 @@ public class CompressionBolt implements IRichBolt {
 
    @Override
    public void prepare(Map conf, TopologyContext context, OutputCollector collector) {
+      this.configuration = new PoliticsXML("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/PoliticsConfigure.xml");
       this.startTime = System.currentTimeMillis();
-      this.emissionFrequency = 9000;
-      this.metadataOutPath = "/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/CorrelationCompression.xml";
+      this.emissionFrequency = this.configuration.getCITimeMSAmount();
+      this.metadataOutPath = "/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/CorrelationCompression" + this.configuration.getConfID()  + ".xml";
       this.compressMap = new ArrayList<String>();
       this.collector = collector;
    }

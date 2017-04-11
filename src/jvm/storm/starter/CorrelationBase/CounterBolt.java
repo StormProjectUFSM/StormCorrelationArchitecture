@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import storm.starter.AlgorithmBase.PoliticsXML;
+
 import org.apache.storm.tuple.Fields;
 import org.apache.storm.tuple.Values;
 import org.apache.storm.task.OutputCollector;
@@ -15,6 +17,7 @@ import org.apache.storm.topology.OutputFieldsDeclarer;
 import org.apache.storm.tuple.Tuple;
 
 public class CounterBolt implements IRichBolt {
+   private PoliticsXML configuration;
    private long startTime, emissionFrequency;
    private String metadataOutPath;
    private Map<String, Integer> counterMap;
@@ -39,9 +42,10 @@ public class CounterBolt implements IRichBolt {
 
    @Override
    public void prepare(Map conf, TopologyContext context, OutputCollector collector) {
+      this.configuration = new PoliticsXML("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/PoliticsConfigure.xml");
       this.startTime = System.currentTimeMillis();
-      this.emissionFrequency = 9000;
-      this.metadataOutPath = "/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/CorrelationCounter.xml";
+      this.emissionFrequency = this.configuration.getCITimeMSAmount();
+      this.metadataOutPath = "/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/CorrelationCounter" + this.configuration.getConfID()  + ".xml";
       this.counterMap = new HashMap<String, Integer>();
       this.collector = collector;
    }

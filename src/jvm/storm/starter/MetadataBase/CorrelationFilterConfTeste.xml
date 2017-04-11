@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<elementList>
+<element>
+      <ip>192.168.0.2</ip>
+       <counter>20</counter>
+</element>
+<element>
+      <ip>192.168.0.1</ip>
+       <counter>24</counter>
+</element>
+<element>
+      <ip>192.168.0.3</ip>
+       <counter>22</counter>
+</element>
+</elementList>

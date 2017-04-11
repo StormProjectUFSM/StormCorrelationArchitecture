@@ -30,8 +30,8 @@ public class CorrelationXML{
 		catch(SAXException e){}
 		catch(IOException e){}
 		catch (ParserConfigurationException e){}
-	}	
-	
+	}
+
 	public boolean chargeNextElement(){
 		if (NextElement < ElementsList.getLength()){
 			ActualElement = ElementsList.item(NextElement);
@@ -41,7 +41,7 @@ public class CorrelationXML{
 		ActualElement = null;
 		return false;
 	}
-	
+
 	public String getElementIP(){
 		if (ActualElement != null){
 			return ((Element) ActualElement).getElementsByTagName("ip").item(0).getTextContent();
@@ -56,5 +56,5 @@ public class CorrelationXML{
 			}
 		}
 		return null;
-	}	
+	}
 }

@@ -8,6 +8,8 @@ import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 
+import storm.starter.AlgorithmBase.PoliticsXML;
+
 import org.apache.storm.tuple.Fields;
 import org.apache.storm.tuple.Values;
 import org.apache.storm.task.OutputCollector;
@@ -17,6 +19,7 @@ import org.apache.storm.topology.OutputFieldsDeclarer;
 import org.apache.storm.tuple.Tuple;
 
 public class FilterBolt implements IRichBolt {
+   private PoliticsXML configuration;
    private long startTime, emissionFrequency;
    private String metadataOutPath;
    private Map<String, Integer> counterMap;
@@ -41,22 +44,16 @@ public class FilterBolt implements IRichBolt {
 
    @Override
    public void prepare(Map conf, TopologyContext context, OutputCollector collector) {
+      this.configuration = new PoliticsXML("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/PoliticsConfigure.xml");
       this.startTime = System.currentTimeMillis();
-      this.emissionFrequency = 9000;
-      this.metadataOutPath = "/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/CorrelationFilter.xml";
+      this.emissionFrequency = this.configuration.getCITimeMSAmount();
+      this.metadataOutPath = "/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/CorrelationFilter" + this.configuration.getConfID()  + ".xml";
       this.counterMap = new HashMap<String, Integer>();
       this.collector = collector;
 
-      try{
-      	FileReader freader = new FileReader("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/CorrelationBase/MetaData/FilterIPs");
-      	BufferedReader fbuffer = new BufferedReader(freader);
-
-	for (String IP = fbuffer.readLine(); IP != null; IP = fbuffer.readLine()){
-  	  counterMap.put(IP, 0);
-	}
-        freader.close();
+      for(String IP : this.configuration.getCIIPList()){
+         this.counterMap.put(IP, 0);
       }
-      catch(IOException ex){}
    }
 
    @Override
