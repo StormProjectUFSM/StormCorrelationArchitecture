@@ -17,13 +17,33 @@ import org.apache.storm.topology.OutputFieldsDeclarer;
 import org.apache.storm.tuple.Tuple;
 
 public class FilterBolt implements IRichBolt {
+   private long startTime, emissionFrequency;
    private String metadataOutPath;
    private Map<String, Integer> counterMap;
    private OutputCollector collector;
 
+   private void makeMetadataXML(){
+     try{
+        FileWriter finserter = new FileWriter(new File(this.metadataOutPath));
+        finserter.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<elementList>");
+        for(Map.Entry<String, Integer> entry:counterMap.entrySet()){
+            finserter.write("\n<element>\n      <ip>" + entry.getKey() + "</ip>\n       <counter>" + entry.getValue() + "</counter>\n</element>");
+        }
+        finserter.write("\n</elementList>");
+        finserter.close();
+     }
+     catch(IOException ex){
+         for(Map.Entry<String, Integer> entry:counterMap.entrySet()){
+             System.out.println(entry.getKey() + ":" + entry.getValue());
+         }
+     }
+   }
+
    @Override
    public void prepare(Map conf, TopologyContext context, OutputCollector collector) {
-      this.metadataOutPath = this.metadataOutPath = "/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/Correlation.xml";
+      this.startTime = System.currentTimeMillis();
+      this.emissionFrequency = 9000;
+      this.metadataOutPath = "/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/CorrelationFilter.xml";
       this.counterMap = new HashMap<String, Integer>();
       this.collector = collector;
 
@@ -48,26 +68,17 @@ public class FilterBolt implements IRichBolt {
          counterMap.put(call, c);
       }
 
+      if(System.currentTimeMillis() - this.startTime >= this.emissionFrequency){
+         this.makeMetadataXML();
+         //Acorda o bolt de ação.
+         this.startTime = System.currentTimeMillis();
+      }
+
       collector.ack(tuple);
    }
 
    @Override
-   public void cleanup() {
-     try{
-        FileWriter finserter = new FileWriter(new File(this.metadataOutPath));
-        finserter.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<elementList>");
-	for(Map.Entry<String, Integer> entry:counterMap.entrySet()){
-            finserter.write("\n<element>\n	<ip>" + entry.getKey() + "</ip>\n	<counter>" + entry.getValue() + "</counter>\n</element>");
-        }
-	finserter.write("\n</elementList>");
-        finserter.close();
-     }
-     catch(IOException ex){
-         for(Map.Entry<String, Integer> entry:counterMap.entrySet()){
-             System.out.println(entry.getKey()+" : " + entry.getValue());
-         }
-     }
-   }
+   public void cleanup() {}
 
    @Override
    public void declareOutputFields(OutputFieldsDeclarer declarer) {

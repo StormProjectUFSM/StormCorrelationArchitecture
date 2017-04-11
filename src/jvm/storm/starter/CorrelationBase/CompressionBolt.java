@@ -42,7 +42,7 @@ public class CompressionBolt implements IRichBolt {
    public void prepare(Map conf, TopologyContext context, OutputCollector collector) {
       this.startTime = System.currentTimeMillis();
       this.emissionFrequency = 9000;
-      this.metadataOutPath = "/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/Correlation.xml";
+      this.metadataOutPath = "/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/CorrelationCompression.xml";
       this.compressMap = new ArrayList<String>();
       this.collector = collector;
    }
@@ -55,11 +55,9 @@ public class CompressionBolt implements IRichBolt {
          compressMap.add(call);
       }
 
-      //System.out.println("\n\n\n\nTime: " + this.startTime + " " + this.timer.getTime() + " "  + (this.timer.getTime() - this.startTime) + "\n\n");
       if(System.currentTimeMillis() - this.startTime >= this.emissionFrequency){
 	 this.makeMetadataXML();
          //Acorda o bolt de ação.
-         this.metadataOutPath = "/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/Correlation2.xml"; //teste
          this.startTime = System.currentTimeMillis();
       }
 
@@ -67,9 +65,7 @@ public class CompressionBolt implements IRichBolt {
    }
 
    @Override
-   public void cleanup() {
-    System.out.println("\n\n\n\n" + this.metadataOutPath + "\n\n\n\n\n");
-   }
+   public void cleanup() {}
 
    @Override
    public void declareOutputFields(OutputFieldsDeclarer declarer) {
