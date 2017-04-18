@@ -36,23 +36,21 @@ Carlos Raniery P. dos Santos (csantos@inf.ufsm.br)
 
 * [Correlation Bolts](https://github.com/StormProjectUFSM/StormCorrelationArchitecture/tree/master/src/jvm/storm/starter/CorrelationBase)
 
-	- [Compression - Time Trigger](https://github.com/StormProjectUFSM/StormCorrelationArchitecture/blob/master/src/jvm/storm/starter/CorrelationBase/CompressionBolt.java)
+	- [Compression - Time Trigger](https://github.com/StormProjectUFSM/StormCorrelationArchitecture/blob/master/src/jvm/storm/starter/CorrelationBase/ChronoCompressionBolt.java)
 
-	- [Counter - Time Trigger](https://github.com/StormProjectUFSM/StormCorrelationArchitecture/blob/master/src/jvm/storm/starter/CorrelationBase/CounterBolt.java)
+	- [Counter - Time Trigger](https://github.com/StormProjectUFSM/StormCorrelationArchitecture/blob/master/src/jvm/storm/starter/CorrelationBase/ChronoCounterBolt.java)
 
-	- [Filter - Time Trigger](https://github.com/StormProjectUFSM/StormCorrelationArchitecture/blob/master/src/jvm/storm/starter/CorrelationBase/FilterBolt.java)
+	- [Filter - Time Trigger](https://github.com/StormProjectUFSM/StormCorrelationArchitecture/blob/master/src/jvm/storm/starter/CorrelationBase/ChronoFilterBolt.java)
+
+	- [Compression - Event Trigger](https://github.com/StormProjectUFSM/StormCorrelationArchitecture/blob/master/src/jvm/storm/starter/CorrelationBase/EventCompressionBolt.java)
+
+	- [Counter - Event Trigger](https://github.com/StormProjectUFSM/StormCorrelationArchitecture/blob/master/src/jvm/storm/starter/CorrelationBase/EventCounterBolt.java)
+
+	- [Filter - Event Trigger](https://github.com/StormProjectUFSM/StormCorrelationArchitecture/blob/master/src/jvm/storm/starter/CorrelationBase/EventFilterBolt.java)
 
 * [Tests Set](https://github.com/StormProjectUFSM/StormCorrelationArchitecture/tree/master/src/jvm/storm/starter/TestsBase)
 
 ### TO DO
-
-* Correlation Bolts
-
-	- Compression - Event Trigger
-
-	- Counter - Event Trigger
-
-	- Filter - Event Trigger
 
 * Action Bolts
 

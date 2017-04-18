@@ -5,7 +5,8 @@ import org.apache.storm.tuple.Values;
 import org.apache.storm.Config;
 import org.apache.storm.LocalCluster;
 import org.apache.storm.topology.TopologyBuilder;
-import storm.starter.CorrelationBase.CompressionBolt;
+import storm.starter.CorrelationBase.*;
+import storm.starter.ActionBase.*;
 
 public class CorrelationCompressionTest{
    public static void main(String[] args) throws Exception{
@@ -14,8 +15,11 @@ public class CorrelationCompressionTest{
 
       TopologyBuilder builder = new TopologyBuilder();
       builder.setSpout("call-log-reader-spout", new FakeTrafficSpout());
-      builder.setBolt("call-log-compress-bolt", new CompressionBolt())
-         .fieldsGrouping("call-log-reader-spout", new Fields("call"));
+      //builder.setBolt("call-log-compress-bolt", new ChronoCompressionBolt())
+      builder.setBolt("call-log-compress-bolt", new EventCompressionBolt())
+      .fieldsGrouping("call-log-reader-spout", new Fields("call"));
+      builder.setBolt("call-log-bolt", new LogBolt())
+      .fieldsGrouping("call-log-compress-bolt", new Fields("request"));
 
       LocalCluster cluster = new LocalCluster();
       cluster.submitTopology("LogAnalyserStorm", config, builder.createTopology());

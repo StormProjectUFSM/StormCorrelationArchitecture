@@ -4,15 +4,17 @@ org/apache/storm/starter/tools/NthLastModifiedTimeTracker.class
 org/apache/storm/starter/trident/TridentMinMaxOfVehiclesTopology.class
 org/apache/storm/starter/ReachTopology$GetTweeters.class
 storm/starter/TestsBase/FakeTrafficSpout.class
+storm/starter/CorrelationBase/EventFilterBolt.class
 org/apache/storm/starter/trident/TridentMinMaxOfDevicesTopology$EfficiencyComparator.class
 org/apache/storm/starter/trident/TridentWordCount$Split.class
+storm/starter/CorrelationBase/ChronoCompressionBolt.class
 org/apache/storm/starter/BlobStoreAPIWordCountTopology$RandomSentenceSpout.class
-storm/starter/CorrelationBase/CounterBolt.class
 org/apache/storm/starter/WordCountTopologyNode.class
-storm/starter/CorrelationBase/CompressionBolt.class
+storm/starter/CorrelationBase/EventCounterBolt.class
 org/apache/storm/starter/bolt/SingleJoinBolt$ExpireCallback.class
 org/apache/storm/starter/WordCountTopologyNode$RandomSentence.class
 org/apache/storm/starter/ReachTopology$1.class
+storm/starter/CorrelationBase/ChronoCounterBolt.class
 org/apache/storm/starter/SlidingWindowTopology$1.class
 storm/starter/TestsBase/CorrelationCompressionTest.class
 org/apache/storm/starter/spout/RandomIntegerSpout.class
@@ -31,7 +33,6 @@ org/apache/storm/starter/TransactionalWords$1.class
 org/apache/storm/starter/TransactionalWords$1$3.class
 org/apache/storm/starter/trident/TridentReach$One.class
 org/apache/storm/starter/bolt/PrinterBolt.class
-storm/starter/CorrelationBase/FilterBolt.class
 org/apache/storm/starter/InOrderDeliveryTest$Check.class
 org/apache/storm/starter/trident/TridentReach$StaticSingleKeyMapState.class
 org/apache/storm/starter/trident/TridentWordCount.class
@@ -62,7 +63,9 @@ org/apache/storm/starter/tools/RankableObjectWithFields.class
 org/apache/storm/starter/ResourceAwareExampleTopology.class
 org/apache/storm/starter/ThroughputVsLatency$MemMeasure.class
 org/apache/storm/starter/spout/RandomSentenceSpout.class
+storm/starter/ActionBase/LogBolt.class
 org/apache/storm/starter/TransactionalGlobalCount$1$3.class
+storm/starter/CorrelationBase/EventCompressionBolt.class
 org/apache/storm/starter/trident/TridentHBaseWindowingStoreTopology.class
 org/apache/storm/starter/WordCountTopology.class
 org/apache/storm/starter/SlidingWindowTopology$TumblingWindowAvgBolt.class
@@ -91,6 +94,7 @@ org/apache/storm/starter/trident/TridentMinMaxOfDevicesTopology$Driver.class
 org/apache/storm/starter/trident/TridentMapExample$2.class
 org/apache/storm/starter/TransactionalWords$CountValue.class
 org/apache/storm/starter/TransactionalWords.class
+storm/starter/CorrelationBase/ChronoFilterBolt.class
 org/apache/storm/starter/ThroughputVsLatency$1.class
 org/apache/storm/starter/ReachTopology$2.class
 org/apache/storm/starter/trident/TridentReach$2.class

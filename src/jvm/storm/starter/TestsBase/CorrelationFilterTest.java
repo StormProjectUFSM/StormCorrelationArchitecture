@@ -5,7 +5,8 @@ import org.apache.storm.tuple.Values;
 import org.apache.storm.Config;
 import org.apache.storm.LocalCluster;
 import org.apache.storm.topology.TopologyBuilder;
-import storm.starter.CorrelationBase.FilterBolt;
+import storm.starter.CorrelationBase.ChronoFilterBolt;
+import storm.starter.CorrelationBase.EventFilterBolt;
 
 public class CorrelationFilterTest {
    public static void main(String[] args) throws Exception{
@@ -14,8 +15,9 @@ public class CorrelationFilterTest {
 
       TopologyBuilder builder = new TopologyBuilder();
       builder.setSpout("call-log-reader-spout", new FakeTrafficSpout());
-      builder.setBolt("call-log-filter-bolt", new FilterBolt())
-         .fieldsGrouping("call-log-reader-spout", new Fields("call"));
+      //builder.setBolt("call-log-filter-bolt", new ChronoFilterBolt())
+      builder.setBolt("call-log-filter-bolt", new EventFilterBolt())
+      .fieldsGrouping("call-log-reader-spout", new Fields("call"));
 
       LocalCluster cluster = new LocalCluster();
       cluster.submitTopology("LogAnalyserStorm", config, builder.createTopology());
