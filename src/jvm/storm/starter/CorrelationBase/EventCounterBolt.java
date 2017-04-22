@@ -53,7 +53,7 @@ public class EventCounterBolt implements IRichBolt {
    public void execute(Tuple tuple) {
      Integer c;
      String call = tuple.getString(0);
-
+     System.out.println("\n\nAQUIIII  " + call);
       if(!counterMap.containsKey(call)){
          c = 1;
 	 counterMap.put(call, 1);
@@ -64,7 +64,7 @@ public class EventCounterBolt implements IRichBolt {
 
       if(c % this.emissionFrequency == 0){
          this.makeMetadataXML();
-         this.collector.emit(new Values(this.metadataOutPath));
+         //this.collector.emit(new Values(this.metadataOutPath));
       }
 
       collector.ack(tuple);

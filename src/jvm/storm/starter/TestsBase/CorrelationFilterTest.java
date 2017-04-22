@@ -17,7 +17,7 @@ public class CorrelationFilterTest {
       builder.setSpout("call-log-reader-spout", new FakeTrafficSpout());
       //builder.setBolt("call-log-filter-bolt", new ChronoFilterBolt())
       builder.setBolt("call-log-filter-bolt", new EventFilterBolt())
-      .fieldsGrouping("call-log-reader-spout", new Fields("call"));
+      .fieldsGrouping("call-log-reader-spout", new Fields("srcID", "dstID", "protocol", "size", "payload"));
 
       LocalCluster cluster = new LocalCluster();
       cluster.submitTopology("LogAnalyserStorm", config, builder.createTopology());
