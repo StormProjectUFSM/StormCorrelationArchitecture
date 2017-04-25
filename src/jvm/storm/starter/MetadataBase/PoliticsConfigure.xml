@@ -8,9 +8,8 @@
 	</basicInfo>
 	<correlationInfo>
 		<ipList>
-			<ip>192.168.0.1</ip>
-			<ip>192.168.0.2</ip>
-			<ip>192.168.0.3</ip>
+			<ip>114.159.107.124</ip>
+			<ip>122.225.71.23</ip>
 		</ipList>
 		<timeMSAmount>7000</timeMSAmount>
 		<eventsAmount>5</eventsAmount>

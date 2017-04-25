@@ -33,17 +33,16 @@ public class LogBolt implements IRichBolt {
    @Override
    public void execute(Tuple tuple) {
 
-     //try{
-        //CorrelationXML request = new CorrelationXML(tuple.getString(0));
-        //FileWriter finserter = new FileWriter(new File(this.logOutPath));
-        //while (request.chargeNextElement()){
-	//	finserter.write(request.getElementIP() + " " + request.getElementCounter() + "\n");
-      	//}
-        //finserter.close();
-     //}
-     //catch(IOException ex){}
-
-     System.out.println("\n\n\n\n\n\n\n\n\n AQUIIIII: " + tuple.getString(0) + "\n\n\n\n\n\n\n\n\n");
+     try{
+        CorrelationXML request = new CorrelationXML(tuple.getString(0));
+	FileWriter finserter = new FileWriter(new File(this.logOutPath));
+        while (request.chargeNextElement()){
+		finserter.write(request.getElementIP() + " " + request.getElementCounter() + "\n");
+      	}
+        finserter.close();
+	request.close();
+     }
+     catch(IOException ex){}
 
       collector.ack(tuple);
    }

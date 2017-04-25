@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class CorrelationXML{
 	private File XMLFile;
-    private Document XMLDocument;
+        private Document XMLDocument;
 	private NodeList ElementsList;
 	private Node ActualElement;
 	private Integer NextElement;
@@ -56,5 +56,9 @@ public class CorrelationXML{
 			}
 		}
 		return null;
+	}
+
+	public void close(){
+		this.XMLFile.delete();
 	}
 }

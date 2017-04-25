@@ -18,13 +18,15 @@ import org.apache.storm.tuple.Tuple;
 
 public class ChronoCounterBolt implements IRichBolt {
    private PoliticsXML configuration;
-   private long startTime, emissionFrequency;
-   private String metadataOutPath;
+   private long startTime, emissionFrequency, metadataOutID;
+   private String metadataOutPathBase, metadataOutPath;
    private Map<String, Integer> counterMap;
    private OutputCollector collector;
 
    private void makeMetadataXML(){
      try{
+        this.metadataOutID++;
+        this.metadataOutPath = this.metadataOutPathBase + this.metadataOutID + ".xml";
         FileWriter finserter = new FileWriter(new File(this.metadataOutPath));
         finserter.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<elementList>");
         for(Map.Entry<String, Integer> entry:counterMap.entrySet()){
@@ -45,7 +47,8 @@ public class ChronoCounterBolt implements IRichBolt {
       this.configuration = new PoliticsXML("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/PoliticsConfigure.xml");
       this.startTime = System.currentTimeMillis();
       this.emissionFrequency = this.configuration.getCITimeMSAmount();
-      this.metadataOutPath = "/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/CorrelationCounter" + this.configuration.getConfID()  + ".xml";
+      this.metadataOutPathBase = "/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/CorrelationCounter" + this.configuration.getConfID();
+      this.metadataOutID = 0;
       this.counterMap = new HashMap<String, Integer>();
       this.collector = collector;
    }

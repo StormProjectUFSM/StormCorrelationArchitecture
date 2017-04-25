@@ -16,13 +16,11 @@ org/apache/storm/starter/WordCountTopologyNode$RandomSentence.class
 org/apache/storm/starter/ReachTopology$1.class
 storm/starter/CorrelationBase/ChronoCounterBolt.class
 org/apache/storm/starter/SlidingWindowTopology$1.class
-storm/starter/TestsBase/CorrelationCompressionTest.class
 org/apache/storm/starter/spout/RandomIntegerSpout.class
 org/apache/storm/starter/trident/TridentWindowingInmemoryStoreTopology$1.class
 org/apache/storm/starter/BlobStoreAPIWordCountTopology$FilterWords.class
 org/apache/storm/starter/TransactionalGlobalCount$1$1.class
 org/apache/storm/starter/TransactionalGlobalCount$UpdateGlobalCount.class
-storm/starter/TestsBase/CorrelationFilterTest.class
 org/apache/storm/starter/FastWordCountTopology$WordCount.class
 org/apache/storm/starter/ThroughputVsLatency.class
 org/apache/storm/starter/trident/TridentMinMaxOfDevicesTopology$SpeedComparator.class
@@ -34,6 +32,7 @@ org/apache/storm/starter/TransactionalWords$1$3.class
 org/apache/storm/starter/trident/TridentReach$One.class
 org/apache/storm/starter/bolt/PrinterBolt.class
 org/apache/storm/starter/InOrderDeliveryTest$Check.class
+storm/starter/TestsBase/CompressionTest.class
 org/apache/storm/starter/trident/TridentReach$StaticSingleKeyMapState.class
 org/apache/storm/starter/trident/TridentWordCount.class
 org/apache/storm/starter/trident/TridentMapExample$1.class
@@ -97,11 +96,11 @@ org/apache/storm/starter/TransactionalWords.class
 storm/starter/CorrelationBase/ChronoFilterBolt.class
 org/apache/storm/starter/ThroughputVsLatency$1.class
 org/apache/storm/starter/ReachTopology$2.class
+storm/starter/TestsBase/FilterTest.class
 org/apache/storm/starter/trident/TridentReach$2.class
 org/apache/storm/starter/InOrderDeliveryTest.class
 org/apache/storm/starter/ExclamationTopology.class
 org/apache/storm/starter/spout/RandomNumberGeneratorSpout.class
-storm/starter/TestsBase/CorrelationCounterTest.class
 org/apache/storm/starter/ThroughputVsLatency$FastRandomSentenceSpout.class
 org/apache/storm/starter/MultipleLoggerTopology.class
 org/apache/storm/starter/TransactionalWords$BucketCountUpdater.class
@@ -109,6 +108,7 @@ org/apache/storm/starter/TransactionalGlobalCount$1.class
 org/apache/storm/starter/BlobStoreAPIWordCountTopology.class
 org/apache/storm/starter/FastWordCountTopology$FastRandomSentenceSpout.class
 org/apache/storm/starter/ReachTopology$CountAggregator.class
+storm/starter/TestsBase/CounterTest.class
 org/apache/storm/starter/TransactionalWords$KeyedCountUpdater.class
 org/apache/storm/starter/trident/TridentReach.class
 org/apache/storm/starter/tools/SlotBasedCounter.class

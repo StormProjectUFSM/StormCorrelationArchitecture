@@ -47,7 +47,7 @@ public class FakeTrafficSpout implements IRichSpout {
 	 packetData = fullPacket.split(",");
          sleepTime = Float.parseFloat(packetData[0].replaceAll("\"", ""))*1000;
          Thread.sleep(sleepTime.intValue());
-         collector.emit(new Values(packetData[1], packetData[2], packetData[3], packetData[4], packetData[5]));
+         collector.emit(new Values(packetData[1].replaceAll("\"", ""), packetData[2].replaceAll("\"", ""), packetData[3].replaceAll("\"", ""), packetData[4].replaceAll("\"", ""), packetData[5].replaceAll("\"", "")));
       }
       catch (IOException e) { }
       catch (InterruptedException e) { }
