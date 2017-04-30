@@ -17,7 +17,7 @@ public class CompressionTest{
       builder.setSpout("call-log-reader-spout", new FakeTrafficSpout());
       builder.setBolt("call-log-compress-bolt", new ChronoCompressionBolt())
       //builder.setBolt("call-log-compress-bolt", new EventCompressionBolt())
-      .fieldsGrouping("call-log-reader-spout", new Fields("srcID", "dstID", "protocol", "size", "payload"));
+      .fieldsGrouping("call-log-reader-spout", new Fields("srcID", "dstID", "dstPort", "protocol", "size", "payload"));
       builder.setBolt("call-log-bolt", new LogBolt())
       .fieldsGrouping("call-log-compress-bolt", new Fields("request"));
 

@@ -18,7 +18,7 @@ public class CounterTest {
       builder.setSpout("call-log-reader-spout", new FakeTrafficSpout());
       builder.setBolt("call-log-counter-bolt", new ChronoCounterBolt())
       //builder.setBolt("call-log-counter-bolt", new EventCounterBolt())
-      .fieldsGrouping("call-log-reader-spout", new Fields("srcID", "dstID", "protocol", "size", "payload"));
+      .fieldsGrouping("call-log-reader-spout", new Fields("srcID", "dstID", "dstPort", "protocol", "size", "payload"));
       builder.setBolt("call-log-bolt", new LogBolt())
       .fieldsGrouping("call-log-counter-bolt", new Fields("request"));
 

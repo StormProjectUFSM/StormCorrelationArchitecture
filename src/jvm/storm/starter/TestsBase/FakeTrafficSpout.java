@@ -40,14 +40,14 @@ public class FakeTrafficSpout implements IRichSpout {
 
       try{
          fullPacket = this.csvReader.readLine();
-         if (fullPacket.length() == 0){
+         if (fullPacket == null){
             this.packetStream.getChannel().position(0);
 	    fullPacket = this.csvReader.readLine();
          }
 	 packetData = fullPacket.split(",");
          sleepTime = Float.parseFloat(packetData[0].replaceAll("\"", ""))*1000;
          Thread.sleep(sleepTime.intValue());
-         collector.emit(new Values(packetData[1].replaceAll("\"", ""), packetData[2].replaceAll("\"", ""), packetData[3].replaceAll("\"", ""), packetData[4].replaceAll("\"", ""), packetData[5].replaceAll("\"", "")));
+         collector.emit(new Values(packetData[1].replaceAll("\"", ""), packetData[2].replaceAll("\"", ""), packetData[3].replaceAll("\"", ""), packetData[4].replaceAll("\"", ""), packetData[5].replaceAll("\"", ""), packetData[6].replaceAll("\"", "")));
       }
       catch (IOException e) { }
       catch (InterruptedException e) { }
@@ -55,7 +55,7 @@ public class FakeTrafficSpout implements IRichSpout {
 
    @Override
    public void declareOutputFields(OutputFieldsDeclarer declarer) {
-      declarer.declare(new Fields("srcID", "dstID", "protocol", "size", "payload"));
+      declarer.declare(new Fields("srcID", "dstID", "dstPort", "protocol", "size", "payload"));
    }
 
    @Override

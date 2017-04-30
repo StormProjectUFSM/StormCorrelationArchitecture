@@ -1,3 +1,3 @@
 #!bin/bash
 
-mvn -f ../../../../pom.xml package
+sudo mvn -f ../../../../pom.xml package
