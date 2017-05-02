@@ -1,6 +1,6 @@
 #!/bin/bash
 
 cd ../../../..
-git add . -A
-git commit -m "$1"
-git push
+sudo git add . -A
+sudo git commit -m "$1"
+sudo git push

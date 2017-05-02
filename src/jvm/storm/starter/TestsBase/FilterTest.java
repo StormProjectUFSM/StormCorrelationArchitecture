@@ -5,9 +5,9 @@ import org.apache.storm.tuple.Values;
 import org.apache.storm.Config;
 import org.apache.storm.LocalCluster;
 import org.apache.storm.topology.TopologyBuilder;
-import storm.starter.CorrelationBase.ChronoFilterBolt;
-import storm.starter.CorrelationBase.EventFilterBolt;
-import storm.starter.ActionBase.LogBolt;
+import storm.starter.CorrelationBase.*;
+import storm.starter.ActionBase.*;
+import storm.starter.PacketBase.*;
 
 public class FilterTest {
    public static void main(String[] args) throws Exception{
@@ -16,9 +16,11 @@ public class FilterTest {
 
       TopologyBuilder builder = new TopologyBuilder();
       builder.setSpout("call-log-reader-spout", new FakeTrafficSpout());
+      builder.setBolt("call-log-selection-bolt", new SelectionBolt())
+      .fieldsGrouping("call-log-reader-spout", new Fields("srcID", "dstID", "dstPort", "protocol", "size", "payload"));
       builder.setBolt("call-log-filter-bolt", new ChronoFilterBolt())
       //builder.setBolt("call-log-filter-bolt", new EventFilterBolt())
-      .fieldsGrouping("call-log-reader-spout", new Fields("srcID", "dstID", "dstPort", "protocol", "size", "payload"));
+      .fieldsGrouping("call-log-selection-bolt", new Fields("dstPort", "protocol", "size"));
       builder.setBolt("call-log-bolt", new LogBolt())
       .fieldsGrouping("call-log-filter-bolt", new Fields("request"));
 

@@ -7,10 +7,16 @@
 		<action>actionteste</action>
 	</basicInfo>
 	<correlationInfo>
-		<ipList>
-			<ip>114.159.107.124</ip>
-			<ip>122.225.71.23</ip>
-		</ipList>
+		<checkList>
+			<protocol>TCP</protocol>
+			<minPacketSize>10</minPacketSize>
+			<maxPacketSize>60</maxPacketSize>
+		</checkList>
+		<portList>
+			<port>22746</port>
+			<port>54476</port>
+			<port>9249</port>
+		</portList>
 		<timeMSAmount>7000</timeMSAmount>
 		<eventsAmount>5</eventsAmount>
 	</correlationInfo>

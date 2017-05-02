@@ -14,11 +14,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class PoliticsXML{
-
 	private File XMLFile;
-	private Document XMLDocument;
+    private Document XMLDocument;
 
-    	public PoliticsXML(String XMLPath){
+	public PoliticsXML(String XMLPath){
 		try{
 			XMLFile = new File(XMLPath);
 			XMLDocument = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(XMLFile);
@@ -27,7 +26,7 @@ public class PoliticsXML{
 		catch(SAXException e){}
 		catch(IOException e){}
 		catch (ParserConfigurationException e){}
-        }
+	}
 
 	public String getConfID(){
 		return XMLDocument.getElementsByTagName("confID").item(0).getTextContent();
@@ -48,13 +47,31 @@ public class PoliticsXML{
 		return ((Element) bInfo).getElementsByTagName("action").item(0).getTextContent();
 	}
 
-	public ArrayList<String> getCIIPList(){
+	public String getCIProtocol(){
+		Node cInfo = XMLDocument.getElementsByTagName("correlationInfo").item(0);
+		NodeList ipList = ((Element)cInfo).getElementsByTagName("checkList");
+		return ((Element)ipList.item(0)).getElementsByTagName("protocol").item(0).getTextContent();
+	}
+
+	public Long getCIMinPacketSize(){
+		Node cInfo = XMLDocument.getElementsByTagName("correlationInfo").item(0);
+		NodeList ipList = ((Element)cInfo).getElementsByTagName("checkList");
+		return Long.parseLong(((Element)ipList.item(0)).getElementsByTagName("minPacketSize").item(0).getTextContent());
+	}
+
+	public Long getCIMaxPacketSize(){
+		Node cInfo = XMLDocument.getElementsByTagName("correlationInfo").item(0);
+		NodeList ipList = ((Element)cInfo).getElementsByTagName("checkList");
+		return Long.parseLong(((Element)ipList.item(0)).getElementsByTagName("maxPacketSize").item(0).getTextContent());
+	}
+
+	public ArrayList<String> getCIPortList(){
 		ArrayList<String> listOutput = new ArrayList<String>();
 		Node cInfo = XMLDocument.getElementsByTagName("correlationInfo").item(0);
-		NodeList ipList = ((Element)cInfo).getElementsByTagName("ip");
+		NodeList ipList = ((Element)cInfo).getElementsByTagName("port");
 
-		for (int ip = 0; ip < ipList.getLength(); ip++){
-			listOutput.add(ipList.item(ip).getTextContent());
+		for (int port = 0; port < ipList.getLength(); port++){
+			listOutput.add(ipList.item(port).getTextContent());
 		}
 		return listOutput;
 	}
@@ -79,4 +96,3 @@ public class PoliticsXML{
 		return ((Element) aInfo).getElementsByTagName("email").item(0).getTextContent();
 	}
 }
-

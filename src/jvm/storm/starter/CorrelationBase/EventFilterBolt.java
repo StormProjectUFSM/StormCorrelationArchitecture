@@ -53,8 +53,8 @@ public class EventFilterBolt implements IRichBolt {
       this.counterMap = new HashMap<String, Integer>();
       this.collector = collector;
 
-      for(String IP : this.configuration.getCIIPList()){
-         this.counterMap.put(IP, 0);
+      for(String Port : this.configuration.getCIPortList()){
+         this.counterMap.put(Port, 0);
       }
    }
 
