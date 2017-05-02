@@ -32,7 +32,7 @@ public class EventFilterBolt implements IRichBolt {
         FileWriter finserter = new FileWriter(new File(this.metadataOutPath));
         finserter.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<elementList>");
         for(Map.Entry<String, Integer> entry:counterMap.entrySet()){
-            finserter.write("\n<element>\n      <ip>" + entry.getKey() + "</ip>\n       <counter>" + entry.getValue() + "</counter>\n</element>");
+            finserter.write("\n<element>\n      <port>" + entry.getKey() + "</port>\n       <counter>" + entry.getValue() + "</counter>\n</element>");
         }
         finserter.write("\n</elementList>");
         finserter.close();

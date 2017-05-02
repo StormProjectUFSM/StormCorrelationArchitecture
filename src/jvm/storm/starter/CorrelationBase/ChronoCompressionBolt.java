@@ -30,8 +30,8 @@ public class ChronoCompressionBolt implements IRichBolt {
         this.metadataOutPath = this.metadataOutPathBase + this.metadataOutID + ".xml";
         FileWriter finserter = new FileWriter(new File(this.metadataOutPath));
         finserter.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<elementList>");
-        for(String IP : compressMap){
-            finserter.write("\n<element>\n      <ip>" + IP + "</ip>\n       <counter></counter>\n</element>");
+        for(String Port : compressMap){
+            finserter.write("\n<element>\n      <port>" + Port + "</port>\n       <counter></counter>\n</element>");
         }
         finserter.write("\n</elementList>");
         finserter.close();

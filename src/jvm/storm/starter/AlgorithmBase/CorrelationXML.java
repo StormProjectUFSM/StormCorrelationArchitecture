@@ -44,7 +44,7 @@ public class CorrelationXML{
 
 	public String getElementIP(){
 		if (ActualElement != null){
-			return ((Element) ActualElement).getElementsByTagName("ip").item(0).getTextContent();
+			return ((Element) ActualElement).getElementsByTagName("port").item(0).getTextContent();
 		}
 		return null;
 	}
