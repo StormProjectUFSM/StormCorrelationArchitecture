@@ -15,6 +15,8 @@ From: 'an unknown organization'
     License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
   - Guava: Google Core Libraries for Java (http://code.google.com/p/guava-libraries/guava) com.google.guava:guava:bundle:16.0.1
     License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - JSON.simple (http://code.google.com/p/json-simple/) com.googlecode.json-simple:json-simple:jar:1.1
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
   - java-xmlbuilder (http://code.google.com/p/java-xmlbuilder/) com.jamesmurty.utils:java-xmlbuilder:jar:0.4
     License: Apache License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0)
   - Disruptor Framework (http://lmax-exchange.github.com/disruptor) com.lmax:disruptor:jar:3.3.2
@@ -268,6 +270,8 @@ From: 'The Apache Software Foundation' (http://www.apache.org/)
   - storm-hbase (http://storm.apache.org/external/storm-hbase) org.apache.storm:storm-hbase:jar:1.0.3
     License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
   - storm-hdfs (http://storm.apache.org/external/storm-hdfs) org.apache.storm:storm-hdfs:jar:1.0.3
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - storm-kafka (http://storm.apache.org/external/storm-kafka) org.apache.storm:storm-kafka:jar:1.0.1
     License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
   - storm-metrics (http://storm.apache.org/external/storm-metrics) org.apache.storm:storm-metrics:jar:1.0.3
     License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)

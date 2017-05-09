@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" verbose="0" name="Failed suite [Surefire suite]">
+  <test name="Surefire test(failed)">
+    <groups>
+      <run>
+        <exclude name="org.apache.storm.testing.IntegrationTest"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="org.apache.storm.starter.bolt.IntermediateRankingsBoltTest">
+        <methods>
+          <include name="negativeOrZeroTopNShouldThrowIAE" invocation-numbers="0 1 2 3 4"/>
+          <include name="positiveEmitFrequencyShouldBeOk" invocation-numbers="0 1 2 3"/>
+          <include name="shouldEmitSomethingIfTickTupleIsReceived"/>
+          <include name="shouldDeclareOutputFields"/>
+          <include name="shouldEmitNothingIfNormalTupleIsReceived"/>
+          <include name="shouldSetTickTupleFrequencyInComponentConfigurationToNonZeroValue"/>
+          <include name="positiveTopNShouldBeOk" invocation-numbers="0 1 2 3"/>
+          <include name="negativeOrZeroEmitFrequencyShouldThrowIAE" invocation-numbers="0 1 2 3 4"/>
+        </methods>
+      </class> <!-- org.apache.storm.starter.bolt.IntermediateRankingsBoltTest -->
+      <class name="org.apache.storm.starter.bolt.RollingCountBoltTest">
+        <methods>
+          <include name="shouldSetTickTupleFrequencyInComponentConfigurationToNonZeroValue"/>
+          <include name="shouldEmitNothingIfNoObjectHasBeenCountedYetAndTickTupleIsReceived"/>
+          <include name="shouldDeclareOutputFields"/>
+          <include name="shouldEmitSomethingIfAtLeastOneObjectWasCountedAndTickTupleIsReceived"/>
+        </methods>
+      </class> <!-- org.apache.storm.starter.bolt.RollingCountBoltTest -->
+      <class name="org.apache.storm.starter.bolt.TotalRankingsBoltTest">
+        <methods>
+          <include name="negativeOrZeroTopNShouldThrowIAE" invocation-numbers="0 1 2 3 4"/>
+          <include name="positiveTopNShouldBeOk" invocation-numbers="0 1 2 3"/>
+          <include name="negativeOrZeroEmitFrequencyShouldThrowIAE" invocation-numbers="0 1 2 3 4"/>
+          <include name="positiveEmitFrequencyShouldBeOk" invocation-numbers="0 1 2 3"/>
+          <include name="shouldSetTickTupleFrequencyInComponentConfigurationToNonZeroValue"/>
+          <include name="shouldDeclareOutputFields"/>
+          <include name="shouldEmitNothingIfNormalTupleIsReceived"/>
+          <include name="shouldEmitSomethingIfTickTupleIsReceived"/>
+        </methods>
+      </class> <!-- org.apache.storm.starter.bolt.TotalRankingsBoltTest -->
+    </classes>
+  </test> <!-- Surefire test(failed) -->
+</suite> <!-- Failed suite [Surefire suite] -->

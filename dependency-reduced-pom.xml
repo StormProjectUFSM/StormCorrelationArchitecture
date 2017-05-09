@@ -4,7 +4,7 @@
     <artifactId>storm</artifactId>
     <groupId>org.apache.storm</groupId>
     <version>1.0.3</version>
-    <relativePath>../../../../../../../../../../pom.xml/pom.xml</relativePath>
+    <relativePath>../../../pom.xml/pom.xml</relativePath>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.apache.storm</groupId>
@@ -212,18 +212,6 @@
         <exclusion>
           <artifactId>log4j-over-slf4j</artifactId>
           <groupId>org.slf4j</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.storm</groupId>
-      <artifactId>storm-kafka</artifactId>
-      <version>1.0.3</version>
-      <scope>provided</scope>
-      <exclusions>
-        <exclusion>
-          <artifactId>json-simple</artifactId>
-          <groupId>com.googlecode.json-simple</groupId>
         </exclusion>
       </exclusions>
     </dependency>
