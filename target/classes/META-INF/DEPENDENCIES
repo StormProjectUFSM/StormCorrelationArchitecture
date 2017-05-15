@@ -271,7 +271,7 @@ From: 'The Apache Software Foundation' (http://www.apache.org/)
     License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
   - storm-hdfs (http://storm.apache.org/external/storm-hdfs) org.apache.storm:storm-hdfs:jar:1.0.3
     License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
-  - storm-kafka (http://storm.apache.org/external/storm-kafka) org.apache.storm:storm-kafka:jar:1.0.1
+  - storm-kafka (http://storm.apache.org/external/storm-kafka) org.apache.storm:storm-kafka:jar:1.0.3
     License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
   - storm-metrics (http://storm.apache.org/external/storm-metrics) org.apache.storm:storm-metrics:jar:1.0.3
     License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)

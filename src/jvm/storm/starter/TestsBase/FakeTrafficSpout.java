@@ -47,7 +47,7 @@ public class FakeTrafficSpout implements IRichSpout {
 	 packetData = fullPacket.split(",");
          sleepTime = Float.parseFloat(packetData[0].replaceAll("\"", ""))*1000;
          Thread.sleep(sleepTime.intValue());
-         collector.emit(new Values(packetData[1].replaceAll("\"", ""), packetData[2].replaceAll("\"", ""), packetData[3].replaceAll("\"", ""), packetData[4].replaceAll("\"", ""), packetData[5].replaceAll("\"", ""), packetData[6].replaceAll("\"", "")));
+         collector.emit(new Values(packetData[1].replaceAll("\"", "") + "," + packetData[2].replaceAll("\"", "") + "," + packetData[3].replaceAll("\"", "") + "," + packetData[4].replaceAll("\"", "") + "," + packetData[5].replaceAll("\"", "") + "," + packetData[6].replaceAll("\"", "")));
       }
       catch (IOException e) { }
       catch (InterruptedException e) { }
@@ -55,7 +55,7 @@ public class FakeTrafficSpout implements IRichSpout {
 
    @Override
    public void declareOutputFields(OutputFieldsDeclarer declarer) {
-      declarer.declare(new Fields("srcID", "dstID", "dstPort", "protocol", "size", "payload"));
+      declarer.declare(new Fields("packet"));
    }
 
    @Override
