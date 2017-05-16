@@ -27,16 +27,16 @@ public class CompressionTest{
       builder.setBolt("call-log-selection-bolt", new SelectionBolt())
       .shuffleGrouping("call-log-reader-spout");
       //.fieldsGrouping("call-log-reader-spout", new Fields("srcID", "dstID", "dstPort", "protocol", "size", "payload"));
-      builder.setBolt("call-log-compress-bolt", new ChronoCompressionBolt())
-      //builder.setBolt("call-log-compress-bolt", new EventCompressionBolt())
-      .fieldsGrouping("call-log-selection-bolt", new Fields("dstPort", "protocol", "size"));
+      //builder.setBolt("call-log-compress-bolt", new ChronoCompressionBolt())
+      builder.setBolt("call-log-compress-bolt", new EventCompressionBolt())
+      .fieldsGrouping("call-log-selection-bolt", new Fields("dstPort", "protocol", "size", "fullpacket"));
       builder.setBolt("call-log-bolt", new LogBolt())
       .fieldsGrouping("call-log-compress-bolt", new Fields("request"));
 
       LocalCluster cluster = new LocalCluster();
       cluster.submitTopology("LogAnalyserStorm", config, builder.createTopology());
 
-      Thread.sleep(30000);
+      Thread.sleep(10000);
       cluster.shutdown();
    }
 }

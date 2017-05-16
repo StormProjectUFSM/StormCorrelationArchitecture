@@ -22,6 +22,7 @@ public class EventCompressionBolt implements IRichBolt {
    private long eventsAmount, emissionFrequency, metadataOutID;
    private String metadataOutPathBase, metadataOutPath;
    private List<String> compressMap;
+   private List<List<String>> compressPackets;
    private OutputCollector collector;
 
    private void makeMetadataXML(){
@@ -31,7 +32,11 @@ public class EventCompressionBolt implements IRichBolt {
         FileWriter finserter = new FileWriter(new File(this.metadataOutPath));
         finserter.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<elementList>");
         for(String Port : compressMap){
-            finserter.write("\n<element>\n      <port>" + Port + "</port>\n       <counter></counter>\n</element>");
+            finserter.write("\n<element>\n      <port>" + Port + "</port>\n       <counter></counter>\n       <packets>\n");
+	    for(String packet : compressPackets.get(compressMap.indexOf(Port))){
+	       finserter.write("            <packet>" + packet + "</packet>\n");
+	    }
+	    finserter.write("       </packets>\n</element>");
         }
         finserter.write("\n</elementList>");
         finserter.close();
@@ -51,6 +56,7 @@ public class EventCompressionBolt implements IRichBolt {
       this.metadataOutPathBase = "/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/CorrelationCompression" + this.configuration.getConfID();
       this.metadataOutID = 0;
       this.compressMap = new ArrayList<String>();
+      this.compressPackets = new ArrayList<List<String>>();
       this.collector = collector;
    }
 
@@ -61,6 +67,11 @@ public class EventCompressionBolt implements IRichBolt {
       this.eventsAmount++;
       if(!compressMap.contains(call)){
          compressMap.add(call);
+         compressPackets.add(new ArrayList<String>());
+      }
+      int index = compressMap.indexOf(call);
+      if(!compressPackets.get(index).contains(tuple.getString(3))){
+          compressPackets.get(index).add(tuple.getString(3));
       }
 
       if(this.eventsAmount == this.emissionFrequency){

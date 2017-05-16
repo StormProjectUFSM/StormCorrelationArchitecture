@@ -2,6 +2,8 @@ package storm.starter.CorrelationBase;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.FileReader;
@@ -23,6 +25,7 @@ public class EventFilterBolt implements IRichBolt {
    private long emissionFrequency, metadataOutID;
    private String metadataOutPathBase, metadataOutPath;
    private Map<String, Integer> counterMap;
+   private Map<String, List<String>> packetsMap;
    private OutputCollector collector;
 
    private void makeMetadataXML(){
@@ -32,7 +35,11 @@ public class EventFilterBolt implements IRichBolt {
         FileWriter finserter = new FileWriter(new File(this.metadataOutPath));
         finserter.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<elementList>");
         for(Map.Entry<String, Integer> entry:counterMap.entrySet()){
-            finserter.write("\n<element>\n      <port>" + entry.getKey() + "</port>\n       <counter>" + entry.getValue() + "</counter>\n</element>");
+            finserter.write("\n<element>\n      <port>" + entry.getKey() + "</port>\n       <counter>" + entry.getValue() + "</counter>\n       <packets>\n");
+            for (String packet : packetsMap.get(entry.getKey())){
+	      finserter.write("            <packet>" + packet + "</packet>\n");
+	    }
+	    finserter.write("       </packets>\n</element>");
         }
         finserter.write("\n</elementList>");
         finserter.close();
@@ -51,10 +58,12 @@ public class EventFilterBolt implements IRichBolt {
       this.metadataOutPathBase = "/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/CorrelationFilter" + this.configuration.getConfID();
       this.metadataOutID = 0;
       this.counterMap = new HashMap<String, Integer>();
+      this.packetsMap = new HashMap<String, List<String>>();
       this.collector = collector;
 
       for(String Port : this.configuration.getCIPortList()){
          this.counterMap.put(Port, 0);
+         this.packetsMap.put(Port, new ArrayList<String>());
       }
    }
 
@@ -66,6 +75,9 @@ public class EventFilterBolt implements IRichBolt {
       if(counterMap.containsKey(call)){
          c = counterMap.get(call) + 1;
          counterMap.put(call, c);
+         if(!packetsMap.get(call).contains(tuple.getString(3))){
+	   packetsMap.get(call).add(tuple.getString(3));
+         }
 
           if(c % this.emissionFrequency == 0){
               this.makeMetadataXML();

@@ -35,12 +35,12 @@ public class SelectionBolt implements IRichBolt {
 
    @Override
    public void execute(Tuple tuple) {
-        String[] fullPacket = tuple.getString(0).split(",");
+      String[] fullPacket = tuple.getString(0).split(",");
       String rProtocol = fullPacket[3];
       long rPacketSize = Long.parseLong(fullPacket[4]);
 
       if ((rProtocol.equals(this.packetProtocol)) && (rPacketSize >= this.minPacketSize) && (rPacketSize <= this.maxPacketSize)){
-         this.collector.emit(new Values(fullPacket[2], fullPacket[3], fullPacket[4]));
+         this.collector.emit(new Values(fullPacket[2], fullPacket[3], fullPacket[4], tuple.getString(0)));
       }
 
       collector.ack(tuple);
@@ -51,7 +51,7 @@ public class SelectionBolt implements IRichBolt {
 
    @Override
    public void declareOutputFields(OutputFieldsDeclarer declarer) {
-      declarer.declare(new Fields("dstPort", "protocol", "size"));
+      declarer.declare(new Fields("dstPort", "protocol", "size", "fullpacket"));
    }
 
    @Override

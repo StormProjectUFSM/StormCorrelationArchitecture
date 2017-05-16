@@ -37,7 +37,15 @@ public class LogBolt implements IRichBolt {
         CorrelationXML request = new CorrelationXML(tuple.getString(0));
 	FileWriter finserter = new FileWriter(new File(this.logOutPath));
         while (request.chargeNextElement()){
-		finserter.write(request.getElementIP() + " " + request.getElementCounter() + "\n");
+	    finserter.write("Port: " + request.getElementPort() + "\n");
+            if(!request.getElementCounter().equals("")){
+	        finserter.write("Counter: " + request.getElementCounter() + "\n");
+	    }
+            String[] packets = request.getElementPackets().split("\n");
+	    for(String packet : packets){
+	        finserter.write("Packet: " + packet + "\n");
+	    }
+	    finserter.write("\n");
       	}
         finserter.close();
 	request.close();

@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class CorrelationXML{
 	private File XMLFile;
-        private Document XMLDocument;
+    private Document XMLDocument;
 	private NodeList ElementsList;
 	private Node ActualElement;
 	private Integer NextElement;
@@ -42,7 +42,7 @@ public class CorrelationXML{
 		return false;
 	}
 
-	public String getElementIP(){
+	public String getElementPort(){
 		if (ActualElement != null){
 			return ((Element) ActualElement).getElementsByTagName("port").item(0).getTextContent();
 		}
@@ -54,6 +54,18 @@ public class CorrelationXML{
 			if (((Element) ActualElement).getElementsByTagName("counter").getLength() > 0){
 				return ((Element) ActualElement).getElementsByTagName("counter").item(0).getTextContent();
 			}
+		}
+		return null;
+	}
+
+	public String getElementPackets(){
+		String packetsData = "";
+		if (ActualElement != null){
+			NodeList packetsList = ((Element) ActualElement).getElementsByTagName("packet");
+			for (int packetIndex = 0; packetIndex < packetsList.getLength(); packetIndex++){
+				packetsData += ((Element) packetsList.item(packetIndex)).getTextContent() + "\n";
+			}
+			return packetsData;
 		}
 		return null;
 	}
