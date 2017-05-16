@@ -3,7 +3,6 @@ org/apache/storm/starter/trident/TridentHBaseWindowingStoreTopology$1.class
 org/apache/storm/starter/tools/NthLastModifiedTimeTracker.class
 org/apache/storm/starter/trident/TridentMinMaxOfVehiclesTopology.class
 org/apache/storm/starter/ReachTopology$GetTweeters.class
-storm/starter/TestsBase/FakeTrafficSpout.class
 storm/starter/CorrelationBase/EventFilterBolt.class
 org/apache/storm/starter/trident/TridentMinMaxOfDevicesTopology$EfficiencyComparator.class
 org/apache/storm/starter/trident/TridentWordCount$Split.class

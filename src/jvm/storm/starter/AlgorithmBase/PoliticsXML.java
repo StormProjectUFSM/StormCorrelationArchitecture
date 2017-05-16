@@ -32,11 +32,6 @@ public class PoliticsXML{
 		return XMLDocument.getElementsByTagName("confID").item(0).getTextContent();
 	}
 
-	public String getBIFlow(){
-		Node bInfo = XMLDocument.getElementsByTagName("basicInfo").item(0);
-		return ((Element) bInfo).getElementsByTagName("flow").item(0).getTextContent();
-	}
-
 	public String getBICorrelation(){
 		Node bInfo = XMLDocument.getElementsByTagName("basicInfo").item(0);
 		return ((Element) bInfo).getElementsByTagName("correlation").item(0).getTextContent();

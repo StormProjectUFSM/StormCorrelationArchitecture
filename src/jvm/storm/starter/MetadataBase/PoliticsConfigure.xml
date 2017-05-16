@@ -2,9 +2,8 @@
 <politicsConf>
 	<confID>ConfTeste</confID>
 	<basicInfo>
-		<flow>flowteste</flow>
-		<correlation>correlationteste</correlation>
-		<action>actionteste</action>
+		<correlation>Counter</correlation>
+		<action>Log</action>
 	</basicInfo>
 	<correlationInfo>
 		<checkList>

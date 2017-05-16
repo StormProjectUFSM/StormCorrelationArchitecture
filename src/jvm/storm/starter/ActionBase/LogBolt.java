@@ -56,7 +56,18 @@ public class LogBolt implements IRichBolt {
    }
 
    @Override
-   public void cleanup() {}
+   public void cleanup() {
+       String metaInit = "Correlation" + this.configuration.getBICorrelation() + this.configuration.getConfID();
+       File dir = new File("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase");
+       File[] filesList = dir.listFiles();
+
+
+       for (File file : filesList) {
+           if ((file.isFile()) && (file.getName().startsWith(metaInit)) && (file.getName().endsWith(".xml"))){
+	       file.delete();
+    	   }
+       	}
+   }
 
    @Override
    public void declareOutputFields(OutputFieldsDeclarer declarer) {}
