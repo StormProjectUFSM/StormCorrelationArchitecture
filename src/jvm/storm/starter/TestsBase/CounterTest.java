@@ -8,6 +8,7 @@ import org.apache.storm.topology.TopologyBuilder;
 import org.apache.storm.kafka.*;
 import org.apache.storm.kafka.KafkaConfig;
 import org.apache.storm.spout.SchemeAsMultiScheme;
+import org.apache.storm.generated.KillOptions;
 import storm.starter.CorrelationBase.*;
 import storm.starter.ActionBase.*;
 import storm.starter.PacketBase.*;
@@ -26,7 +27,6 @@ public class CounterTest {
       builder.setSpout("call-log-reader-spout", kafkaSpout);
       builder.setBolt("call-log-selection-bolt", new SelectionBolt())
       .shuffleGrouping("call-log-reader-spout");
-      //.fieldsGrouping("call-log-reader-spout", new Fields("packet"));
       //builder.setBolt("call-log-counter-bolt", new ChronoCounterBolt())
       builder.setBolt("call-log-counter-bolt", new EventCounterBolt())
       .fieldsGrouping("call-log-selection-bolt", new Fields("dstPort", "protocol", "size", "fullpacket"));
@@ -37,6 +37,9 @@ public class CounterTest {
       cluster.submitTopology("LogAnalyserStorm", config, builder.createTopology());
 
       Thread.sleep(10000);
+      KillOptions killOpts = new KillOptions();
+      killOpts.set_wait_secs(1);
+      cluster.killTopologyWithOpts("LogAnalyserStorm", killOpts);
       cluster.shutdown();
    }
 }

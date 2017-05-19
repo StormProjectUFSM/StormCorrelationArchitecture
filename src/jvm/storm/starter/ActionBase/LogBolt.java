@@ -21,12 +21,14 @@ import org.apache.storm.tuple.Tuple;
 public class LogBolt implements IRichBolt {
    private PoliticsXML configuration;
    private String logOutPath;
+   private boolean logOn;
    private OutputCollector collector;
 
    @Override
    public void prepare(Map conf, TopologyContext context, OutputCollector collector) {
       this.configuration = new PoliticsXML("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/PoliticsConfigure.xml");
       this.logOutPath = this.configuration.getAILogLocal();
+      this.logOn = true;
       this.collector = collector;
    }
 
@@ -35,38 +37,37 @@ public class LogBolt implements IRichBolt {
 
      try{
         CorrelationXML request = new CorrelationXML(tuple.getString(0));
-	FileWriter finserter = new FileWriter(new File(this.logOutPath));
+        FileWriter finserter = new FileWriter(new File(this.logOutPath));
         while (request.chargeNextElement()){
-	    finserter.write("Port: " + request.getElementPort() + "\n");
-            if(!request.getElementCounter().equals("")){
-	        finserter.write("Counter: " + request.getElementCounter() + "\n");
-	    }
-            String[] packets = request.getElementPackets().split("\n");
-	    for(String packet : packets){
-	        finserter.write("Packet: " + packet + "\n");
-	    }
-	    finserter.write("\n");
-      	}
+           finserter.write("Port: " + request.getElementPort() + "\n");
+           if(!request.getElementCounter().equals("")){
+              finserter.write("Counter: " + request.getElementCounter() + "\n");
+           }
+           String[] packets = request.getElementPackets().split("\n");
+           for(String packet : packets){
+              finserter.write("Packet: " + packet + "\n");
+           }
+           finserter.write("\n");
+        }
         finserter.close();
-	request.close();
+        request.close();
      }
      catch(IOException ex){}
 
-      collector.ack(tuple);
+     collector.ack(tuple);
    }
 
    @Override
    public void cleanup() {
-       String metaInit = "Correlation" + this.configuration.getBICorrelation() + this.configuration.getConfID();
+       String metaInit = this.configuration.getConfID();
        File dir = new File("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase");
        File[] filesList = dir.listFiles();
 
-
        for (File file : filesList) {
-           if ((file.isFile()) && (file.getName().startsWith(metaInit)) && (file.getName().endsWith(".xml"))){
-	       file.delete();
+          if ((file.isFile()) && (file.getName().startsWith(metaInit)) && (file.getName().endsWith(".xml"))){
+             file.delete();
     	   }
-       	}
+       }
    }
 
    @Override

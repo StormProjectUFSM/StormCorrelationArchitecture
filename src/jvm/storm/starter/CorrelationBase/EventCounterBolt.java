@@ -53,7 +53,7 @@ public class EventCounterBolt implements IRichBolt {
    public void prepare(Map conf, TopologyContext context, OutputCollector collector) {
       this.configuration = new PoliticsXML("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/PoliticsConfigure.xml");
       this.emissionFrequency = this.configuration.getCIEventsAmount();
-      this.metadataOutPathBase = "/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/CorrelationCounter" + this.configuration.getConfID();
+      this.metadataOutPathBase = "/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/" + this.configuration.getConfID();
       this.metadataOutID = 0;
       this.counterMap = new HashMap<String, Integer>();
       this.packetsMap = new HashMap<String, List<String>>();

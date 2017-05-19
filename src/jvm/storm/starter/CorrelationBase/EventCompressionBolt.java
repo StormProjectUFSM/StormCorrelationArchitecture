@@ -53,7 +53,7 @@ public class EventCompressionBolt implements IRichBolt {
       this.configuration = new PoliticsXML("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/PoliticsConfigure.xml");
       this.eventsAmount = 0;
       this.emissionFrequency = this.configuration.getCIEventsAmount();
-      this.metadataOutPathBase = "/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/CorrelationCompression" + this.configuration.getConfID();
+      this.metadataOutPathBase = "/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/" + this.configuration.getConfID();
       this.metadataOutID = 0;
       this.compressMap = new ArrayList<String>();
       this.compressPackets = new ArrayList<List<String>>();

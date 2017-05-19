@@ -56,7 +56,7 @@ public class ChronoFilterBolt implements IRichBolt {
       this.configuration = new PoliticsXML("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/PoliticsConfigure.xml");
       this.startTime = System.currentTimeMillis();
       this.emissionFrequency = this.configuration.getCITimeMSAmount();
-      this.metadataOutPath = "/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/CorrelationFilter" + this.configuration.getConfID();
+      this.metadataOutPath = "/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/" + this.configuration.getConfID();
       this.metadataOutID = 0;
       this.counterMap = new HashMap<String, Integer>();
       this.packetsMap = new HashMap<String, List<String>>();
