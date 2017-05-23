@@ -72,16 +72,18 @@ public class EventFilterBolt implements IRichBolt {
       Integer c;
       String call = tuple.getString(0);
 
-      if(counterMap.containsKey(call)){
-         c = counterMap.get(call) + 1;
-         counterMap.put(call, c);
-         if(!packetsMap.get(call).contains(tuple.getString(3))){
-	   packetsMap.get(call).add(tuple.getString(3));
-         }
+      if(!call.equals("")){
+          if(counterMap.containsKey(call)){
+             c = counterMap.get(call) + 1;
+             counterMap.put(call, c);
+             if(!packetsMap.get(call).contains(tuple.getString(3))){
+	         packetsMap.get(call).add(tuple.getString(3));
+             }
 
-          if(c % this.emissionFrequency == 0){
-              this.makeMetadataXML();
-              this.collector.emit(new Values(this.metadataOutPath));
+              if(c % this.emissionFrequency == 0){
+                 this.makeMetadataXML();
+                 this.collector.emit(new Values(this.metadataOutPath));
+              }
           }
       }
 

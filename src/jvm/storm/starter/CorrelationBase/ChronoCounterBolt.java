@@ -22,7 +22,7 @@ public class ChronoCounterBolt implements IRichBolt {
    private PoliticsXML configuration;
    private long startTime, emissionFrequency, metadataOutID;
    private String metadataOutPathBase, metadataOutPath;
-   private Map<String, Integer> counterMap;
+   private Map<String, Integer> counterMap, generalMap;
    private Map<String, List<String>> packetsMap;
    private OutputCollector collector;
 
@@ -57,6 +57,7 @@ public class ChronoCounterBolt implements IRichBolt {
       this.metadataOutPathBase = "/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/" + this.configuration.getConfID();
       this.metadataOutID = 0;
       this.counterMap = new HashMap<String, Integer>();
+      this.generalMap = new HashMap<String, Integer>();
       this.packetsMap = new HashMap<String, List<String>>();
       this.collector = collector;
    }
@@ -65,17 +66,27 @@ public class ChronoCounterBolt implements IRichBolt {
    public void execute(Tuple tuple) {
       String call = tuple.getString(0);
 
-      if(!counterMap.containsKey(call)){
-         counterMap.put(call, 1);
-         packetsMap.put(call, new ArrayList<String>());
-         packetsMap.get(call).add(tuple.getString(3));
-      }else{
-         Integer c = counterMap.get(call) + 1;
-         counterMap.put(call, c);
-	 if(!packetsMap.get(call).contains(tuple.getString(3))){
-	   packetsMap.get(call).add(tuple.getString(3));
-         }
+      if (!call.equals("")){
+          if(!counterMap.containsKey(call)){
+             counterMap.put(call, 1);
+             packetsMap.put(call, new ArrayList<String>());
+             packetsMap.get(call).add(tuple.getString(3));
+          }else{
+             Integer c = counterMap.get(call) + 1;
+             counterMap.put(call, c);
+	     if(!packetsMap.get(call).contains(tuple.getString(3))){
+	       packetsMap.get(call).add(tuple.getString(3));
+             }
+          }
       }
+      else{
+           if(!generalMap.containsKey(tuple.getString(3))){
+	     generalMap.put(tuple.getString(3), 1);
+	   }else{
+	     Integer c = generalMap.get(tuple.getString(3)) + 1;
+             generalMap.put(tuple.getString(3), c);
+	  }
+       }
 
       if(System.currentTimeMillis() - this.startTime >= this.emissionFrequency){
          this.makeMetadataXML();

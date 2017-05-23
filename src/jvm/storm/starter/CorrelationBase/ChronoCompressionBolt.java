@@ -21,7 +21,7 @@ public class ChronoCompressionBolt implements IRichBolt {
    private PoliticsXML configuration;
    private long startTime, emissionFrequency, metadataOutID;
    private String metadataOutPathBase, metadataOutPath;
-   private List<String> compressMap;
+   private List<String> compressMap, generalMap;
    private List<List<String>> compressPackets;
    private OutputCollector collector;
 
@@ -56,6 +56,7 @@ public class ChronoCompressionBolt implements IRichBolt {
       this.metadataOutPathBase = "/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/" + this.configuration.getConfID();
       this.metadataOutID = 0;
       this.compressMap = new ArrayList<String>();
+      this.generalMap = new ArrayList<String>();
       this.compressPackets = new ArrayList<List<String>>();
       this.collector = collector;
    }
@@ -64,19 +65,26 @@ public class ChronoCompressionBolt implements IRichBolt {
    public void execute(Tuple tuple) {
       String call = tuple.getString(0);
 
-      if(!compressMap.contains(call)){
-         compressMap.add(call);
-         compressPackets.add(new ArrayList<String>());
+      if (!call.equals("")){
+          if(!compressMap.contains(call)){
+             compressMap.add(call);
+             compressPackets.add(new ArrayList<String>());
+          }
+          int index = compressMap.indexOf(call);
+          if(!compressPackets.get(index).contains(tuple.getString(3))){
+              compressPackets.get(index).add(tuple.getString(3));
+          }
       }
-      int index = compressMap.indexOf(call);
-      if(!compressPackets.get(index).contains(tuple.getString(3))){
-          compressPackets.get(index).add(tuple.getString(3));
+      else{
+          if(!generalMap.contains(tuple.getString(3))){
+              generalMap.add(tuple.getString(3));
+          }
       }
 
       if(System.currentTimeMillis() - this.startTime >= this.emissionFrequency){
-	 this.makeMetadataXML();
-         this.collector.emit(new Values(this.metadataOutPath));
-         this.startTime = System.currentTimeMillis();
+          this.makeMetadataXML();
+          this.collector.emit(new Values(this.metadataOutPath));
+          this.startTime = System.currentTimeMillis();
       }
 
       collector.ack(tuple);

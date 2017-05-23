@@ -72,12 +72,14 @@ public class ChronoFilterBolt implements IRichBolt {
    public void execute(Tuple tuple) {
       String call = tuple.getString(0);
 
-      if(counterMap.containsKey(call)){
-         Integer c = counterMap.get(call) + 1;
-         counterMap.put(call, c);
-         if(!packetsMap.get(call).contains(tuple.getString(3))){
-	   packetsMap.get(call).add(tuple.getString(3));
-         }
+      if (!call.equals("")){
+          if(counterMap.containsKey(call)){
+             Integer c = counterMap.get(call) + 1;
+             counterMap.put(call, c);
+             if(!packetsMap.get(call).contains(tuple.getString(3))){
+	       packetsMap.get(call).add(tuple.getString(3));
+             }
+          }
       }
 
       if(System.currentTimeMillis() - this.startTime >= this.emissionFrequency){

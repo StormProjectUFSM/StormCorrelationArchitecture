@@ -21,7 +21,7 @@ public class EventCompressionBolt implements IRichBolt {
    private PoliticsXML configuration;
    private long eventsAmount, emissionFrequency, metadataOutID;
    private String metadataOutPathBase, metadataOutPath;
-   private List<String> compressMap;
+   private List<String> compressMap, generalMap;
    private List<List<String>> compressPackets;
    private OutputCollector collector;
 
@@ -56,6 +56,7 @@ public class EventCompressionBolt implements IRichBolt {
       this.metadataOutPathBase = "/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/" + this.configuration.getConfID();
       this.metadataOutID = 0;
       this.compressMap = new ArrayList<String>();
+      this.generalMap = new ArrayList<String>();
       this.compressPackets = new ArrayList<List<String>>();
       this.collector = collector;
    }
@@ -65,13 +66,21 @@ public class EventCompressionBolt implements IRichBolt {
       String call = tuple.getString(0);
 
       this.eventsAmount++;
-      if(!compressMap.contains(call)){
-         compressMap.add(call);
-         compressPackets.add(new ArrayList<String>());
+      if (!call.equals("")){
+          if(!compressMap.contains(call)){
+              compressMap.add(call);
+              compressPackets.add(new ArrayList<String>());
+          }
+          int index = compressMap.indexOf(call);
+          if(!compressPackets.get(index).contains(tuple.getString(3))){
+              compressPackets.get(index).add(tuple.getString(3));
+          }
       }
-      int index = compressMap.indexOf(call);
-      if(!compressPackets.get(index).contains(tuple.getString(3))){
-          compressPackets.get(index).add(tuple.getString(3));
+      else{
+          if(!generalMap.contains(tuple.getString(3))){
+	      generalMap.add(tuple.getString(3));
+              System.out.println("\n\nAQUI" + tuple.getString(3)+"\n\n");
+          }
       }
 
       if(this.eventsAmount == this.emissionFrequency){
