@@ -27,8 +27,8 @@ public class CounterTest {
       builder.setSpout("call-log-reader-spout", kafkaSpout);
       builder.setBolt("call-log-selection-bolt", new SelectionBolt())
       .shuffleGrouping("call-log-reader-spout");
-      //builder.setBolt("call-log-counter-bolt", new ChronoCounterBolt())
-      builder.setBolt("call-log-counter-bolt", new EventCounterBolt())
+      builder.setBolt("call-log-counter-bolt", new ChronoCounterBolt())
+      //builder.setBolt("call-log-counter-bolt", new EventCounterBolt())
       .fieldsGrouping("call-log-selection-bolt", new Fields("dstPort", "protocol", "size", "fullpacket"));
       builder.setBolt("call-log-bolt", new LogBolt())
       .fieldsGrouping("call-log-counter-bolt", new Fields("request"));

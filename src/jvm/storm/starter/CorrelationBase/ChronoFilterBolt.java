@@ -33,15 +33,15 @@ public class ChronoFilterBolt implements IRichBolt {
         this.metadataOutID++;
         this.metadataOutPath = this.metadataOutPathBase + this.metadataOutID + ".xml";
         FileWriter finserter = new FileWriter(new File(this.metadataOutPath));
-        finserter.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<elementList>");
+        finserter.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<correlationResult>\n    <elementList>");
         for(Map.Entry<String, Integer> entry:counterMap.entrySet()){
-            finserter.write("\n<element>\n      <port>" + entry.getKey() + "</port>\n       <counter>" + entry.getValue() + "</counter>\n       <packets>\n");
+            finserter.write("\n    <element>\n          <port>" + entry.getKey() + "</port>\n           <counter>" + entry.getValue() + "</counter>\n           <packets>\n");
             for (String packet : packetsMap.get(entry.getKey())){
-	      finserter.write("            <packet>" + packet + "</packet>\n");
+	      finserter.write("                <packet>" + packet + "</packet>\n");
 	    }
-	    finserter.write("       </packets>\n</element>");
+	    finserter.write("           </packets>\n    </element>");
         }
-        finserter.write("\n</elementList>");
+        finserter.write("\n    </elementList>\n    <unrecognizedList>\n    </unrecognizedList>\n</correlationResult>");
         finserter.close();
      }
      catch(IOException ex){
@@ -56,7 +56,7 @@ public class ChronoFilterBolt implements IRichBolt {
       this.configuration = new PoliticsXML("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/PoliticsConfigure.xml");
       this.startTime = System.currentTimeMillis();
       this.emissionFrequency = this.configuration.getCITimeMSAmount();
-      this.metadataOutPath = "/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/" + this.configuration.getConfID();
+      this.metadataOutPathBase = "/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/" + this.configuration.getConfID();
       this.metadataOutID = 0;
       this.counterMap = new HashMap<String, Integer>();
       this.packetsMap = new HashMap<String, List<String>>();

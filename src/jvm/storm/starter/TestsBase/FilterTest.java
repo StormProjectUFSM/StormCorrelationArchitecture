@@ -27,8 +27,8 @@ public class FilterTest {
       builder.setSpout("call-log-reader-spout", kafkaSpout);
       builder.setBolt("call-log-selection-bolt", new SelectionBolt())
       .shuffleGrouping("call-log-reader-spout");
-      //builder.setBolt("call-log-filter-bolt", new ChronoFilterBolt())
-      builder.setBolt("call-log-filter-bolt", new EventFilterBolt())
+      builder.setBolt("call-log-filter-bolt", new ChronoFilterBolt())
+      //builder.setBolt("call-log-filter-bolt", new EventFilterBolt())
       .fieldsGrouping("call-log-selection-bolt", new Fields("dstPort", "protocol", "size", "fullpacket"));
       builder.setBolt("call-log-bolt", new LogBolt())
       .fieldsGrouping("call-log-filter-bolt", new Fields("request"));

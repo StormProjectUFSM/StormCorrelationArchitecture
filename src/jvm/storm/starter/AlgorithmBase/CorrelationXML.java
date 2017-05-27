@@ -15,17 +15,23 @@ public class CorrelationXML{
 	private File XMLFile;
     private Document XMLDocument;
 	private NodeList ElementsList;
+	private NodeList UnrecognizedList;
 	private Node ActualElement;
+	private Node ActualUnrecognized;
 	private Integer NextElement;
+	private Integer NextUnrecognized;
 
 	public CorrelationXML(String XMLPath){
 		try{
 			XMLFile = new File(XMLPath);
 			XMLDocument = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(XMLFile);
 			XMLDocument.getDocumentElement().normalize();
-			ElementsList = XMLDocument.getElementsByTagName("element");
+			ElementsList = ((Element) XMLDocument.getElementsByTagName("elementList").item(0)).getElementsByTagName("element");
+			UnrecognizedList = ((Element) XMLDocument.getElementsByTagName("unrecognizedList").item(0)).getElementsByTagName("element");
 			ActualElement = null;
+			ActualUnrecognized = null;
 			NextElement = 0;
+			NextUnrecognized = 0;
 		}
 		catch(SAXException e){}
 		catch(IOException e){}
@@ -39,6 +45,16 @@ public class CorrelationXML{
 			return true;
 		}
 		ActualElement = null;
+		return false;
+	}
+
+	public boolean chargeNextUnrecognized(){
+		if (NextUnrecognized < UnrecognizedList.getLength()){
+			ActualUnrecognized = UnrecognizedList.item(NextUnrecognized);
+			NextUnrecognized++;
+			return true;
+		}
+		ActualUnrecognized = null;
 		return false;
 	}
 
@@ -66,6 +82,22 @@ public class CorrelationXML{
 				packetsData += ((Element) packetsList.item(packetIndex)).getTextContent() + "\n";
 			}
 			return packetsData;
+		}
+		return null;
+	}
+
+	public String getUnrecognizedData(){
+		if (ActualUnrecognized != null){
+			return ((Element) ActualUnrecognized).getElementsByTagName("data").item(0).getTextContent();
+		}
+		return null;
+	}
+
+	public String getUnrecognizedCounter(){
+		if (ActualUnrecognized != null){
+			if (((Element) ActualUnrecognized).getElementsByTagName("counter").getLength() > 0){
+				return ((Element) ActualUnrecognized).getElementsByTagName("counter").item(0).getTextContent();
+			}
 		}
 		return null;
 	}

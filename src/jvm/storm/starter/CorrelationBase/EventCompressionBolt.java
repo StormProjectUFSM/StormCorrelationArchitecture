@@ -30,15 +30,19 @@ public class EventCompressionBolt implements IRichBolt {
         this.metadataOutID++;
         this.metadataOutPath = this.metadataOutPathBase + this.metadataOutID + ".xml";
         FileWriter finserter = new FileWriter(new File(this.metadataOutPath));
-        finserter.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<elementList>");
+        finserter.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<correlationResult>\n    <elementList>");
         for(String Port : compressMap){
-            finserter.write("\n<element>\n      <port>" + Port + "</port>\n       <counter></counter>\n       <packets>\n");
-	    for(String packet : compressPackets.get(compressMap.indexOf(Port))){
-	       finserter.write("            <packet>" + packet + "</packet>\n");
-	    }
-	    finserter.write("       </packets>\n</element>");
+            finserter.write("\n    <element>\n          <port>" + Port + "</port>\n           <counter></counter>\n           <packets>\n");
+            for(String packet : compressPackets.get(compressMap.indexOf(Port))){
+               finserter.write("                <packet>" + packet + "</packet>\n");
+            }
+            finserter.write("           </packets>\n</element>");
         }
-        finserter.write("\n</elementList>");
+        finserter.write("\n    </elementList>\n    <unrecognizedList>");
+        for (String data : generalMap){
+            finserter.write("\n    <element>\n          <data>" + data + "</data>\n           <counter></counter>\n     </element>\n");
+        }
+        finserter.write("\n    </unrecognizedList>\n</correlationResult>");
         finserter.close();
      }
      catch(IOException ex){

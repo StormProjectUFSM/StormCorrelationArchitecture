@@ -27,8 +27,8 @@ public class CompressionTest{
       builder.setSpout("call-log-reader-spout", kafkaSpout);
       builder.setBolt("call-log-selection-bolt", new SelectionBolt())
       .shuffleGrouping("call-log-reader-spout");
-      //builder.setBolt("call-log-compress-bolt", new ChronoCompressionBolt())
-      builder.setBolt("call-log-compress-bolt", new EventCompressionBolt())
+      builder.setBolt("call-log-compress-bolt", new ChronoCompressionBolt())
+      //builder.setBolt("call-log-compress-bolt", new EventCompressionBolt())
       .fieldsGrouping("call-log-selection-bolt", new Fields("dstPort", "protocol", "size", "fullpacket"));
       builder.setBolt("call-log-bolt", new LogBolt())
       .fieldsGrouping("call-log-compress-bolt", new Fields("request"));

@@ -31,15 +31,19 @@ public class EventCounterBolt implements IRichBolt {
         this.metadataOutID++;
         this.metadataOutPath = this.metadataOutPathBase + this.metadataOutID + ".xml";
         FileWriter finserter = new FileWriter(new File(this.metadataOutPath));
-        finserter.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<elementList>");
+        finserter.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<correlationResult>\n    <elementList>");
         for(Map.Entry<String, Integer> entry:counterMap.entrySet()){
-            finserter.write("\n<element>\n      <port>" + entry.getKey() + "</port>\n       <counter>" + entry.getValue() + "</counter>\n       <packets>\n");
+            finserter.write("\n    <element>\n          <port>" + entry.getKey() + "</port>\n           <counter>" + entry.getValue() + "</counter>\n");
             for (String packet : packetsMap.get(entry.getKey())){
-	      finserter.write("            <packet>" + packet + "</packet>\n");
-	    }
-	    finserter.write("       </packets>\n</element>");
+              finserter.write("            <packet>" + packet + "</packet>\n");
+            }
+            finserter.write("           </packets>\n    </element>");
         }
-        finserter.write("\n</elementList>");
+        finserter.write("\n    </elementList>\n    <unrecognizedList>");
+        for (Map.Entry<String, Integer> entry:generalMap.entrySet()){
+            finserter.write("\n    <element>\n          <data>" + entry.getKey() + "</data>\n           <counter>" + entry.getValue() + "</counter>\n");
+        }
+        finserter.write("\n    </unrecognizedList>\n</correlationResult>");
         finserter.close();
      }
      catch(IOException ex){

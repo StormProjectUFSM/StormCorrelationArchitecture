@@ -50,7 +50,7 @@ public class LogBolt implements IRichBolt {
            finserter.write("\n");
         }
         finserter.close();
-        request.close();
+//        request.close();
      }
      catch(IOException ex){}
 
@@ -59,15 +59,15 @@ public class LogBolt implements IRichBolt {
 
    @Override
    public void cleanup() {
-       String metaInit = this.configuration.getConfID();
-       File dir = new File("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase");
-       File[] filesList = dir.listFiles();
+//       String metaInit = this.configuration.getConfID();
+//       File dir = new File("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase");
+//       File[] filesList = dir.listFiles();
 
-       for (File file : filesList) {
-          if ((file.isFile()) && (file.getName().startsWith(metaInit)) && (file.getName().endsWith(".xml"))){
-             file.delete();
-    	   }
-       }
+//       for (File file : filesList) {
+//          if ((file.isFile()) && (file.getName().startsWith(metaInit)) && (file.getName().endsWith(".xml"))){
+//             file.delete();
+//    	   }
+//       }
    }
 
    @Override
