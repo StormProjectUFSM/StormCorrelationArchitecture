@@ -38,7 +38,8 @@ public class LogBolt implements IRichBolt {
      try{
         CorrelationXML request = new CorrelationXML(tuple.getString(0));
         FileWriter finserter = new FileWriter(new File(this.logOutPath));
-        while (request.chargeNextElement()){
+        finserter.write("============= POLITICS LOG =============\n\n");
+	while (request.chargeNextElement()){
            finserter.write("Port: " + request.getElementPort() + "\n");
            if(!request.getElementCounter().equals("")){
               finserter.write("Counter: " + request.getElementCounter() + "\n");
@@ -49,8 +50,16 @@ public class LogBolt implements IRichBolt {
            }
            finserter.write("\n");
         }
+	finserter.write("\n============= GENERAL LOG =============\n\n");
+        while (request.chargeNextUnrecognized()){
+            finserter.write("Data: " + request.getUnrecognizedData() + "\n");
+	    if (!request.getUnrecognizedCounter().equals("")){
+	        finserter.write("Counter: " + request.getUnrecognizedCounter() + "\n");
+	    }
+	    finserter.write("\n");
+	}
         finserter.close();
-//        request.close();
+        request.close();
      }
      catch(IOException ex){}
 
@@ -59,15 +68,15 @@ public class LogBolt implements IRichBolt {
 
    @Override
    public void cleanup() {
-//       String metaInit = this.configuration.getConfID();
-//       File dir = new File("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase");
-//       File[] filesList = dir.listFiles();
+       String metaInit = this.configuration.getConfID();
+       File dir = new File("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase");
+       File[] filesList = dir.listFiles();
 
-//       for (File file : filesList) {
-//          if ((file.isFile()) && (file.getName().startsWith(metaInit)) && (file.getName().endsWith(".xml"))){
-//             file.delete();
-//    	   }
-//       }
+       for (File file : filesList) {
+          if ((file.isFile()) && (file.getName().startsWith(metaInit)) && (file.getName().endsWith(".xml"))){
+             file.delete();
+    	   }
+       }
    }
 
    @Override

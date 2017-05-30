@@ -41,7 +41,7 @@ public class Injection {
                 String message = packetData[1].replaceAll("\"", "") + "," + packetData[2].replaceAll("\"", "") + "," + packetData[3].replaceAll("\"", "") + "," + packetData[4].replaceAll("\"", "") + "," + packetData[5].replaceAll("\"", "") + "," + packetData[6].replaceAll("\"", "");
                 KeyedMessage<String, String> data = new KeyedMessage<String, String>("Network", "192.168.10.1", message);
                 producer.send(data);
-                Thread.sleep(50);
+                Thread.sleep(10);
                 data = new KeyedMessage<String, String>("Network", "192.168.10.1", sysLine);
                 producer.send(data);
             }
