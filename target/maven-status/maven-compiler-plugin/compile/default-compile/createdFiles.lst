@@ -48,6 +48,7 @@ org/apache/storm/starter/trident/TridentReach$StaticSingleKeyMapState$Factory.cl
 org/apache/storm/starter/ReachTopology$PartialUniquer.class
 org/apache/storm/starter/SlidingWindowTopology.class
 org/apache/storm/starter/FastWordCountTopology.class
+storm/starter/AlgorithmBase/CorrelationCreation.class
 org/apache/storm/starter/trident/TridentKafkaWordCount.class
 org/apache/storm/starter/ThroughputVsLatency$SplitSentence.class
 org/apache/storm/starter/util/StormRunner.class

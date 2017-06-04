@@ -11,6 +11,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 import storm.starter.AlgorithmBase.PoliticsXML;
+import storm.starter.AlgorithmBase.CorrelationCreation;
 
 import org.apache.storm.tuple.Fields;
 import org.apache.storm.tuple.Values;
@@ -27,29 +28,6 @@ public class ChronoFilterBolt implements IRichBolt {
    private Map<String, Integer> counterMap;
    private Map<String, List<String>> packetsMap;
    private OutputCollector collector;
-
-   private void makeMetadataXML(){
-     try{
-        this.metadataOutID++;
-        this.metadataOutPath = this.metadataOutPathBase + this.metadataOutID + ".xml";
-        FileWriter finserter = new FileWriter(new File(this.metadataOutPath));
-        finserter.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<correlationResult>\n    <elementList>");
-        for(Map.Entry<String, Integer> entry:counterMap.entrySet()){
-            finserter.write("\n    <element>\n          <port>" + entry.getKey() + "</port>\n           <counter>" + entry.getValue() + "</counter>\n           <packets>\n");
-            for (String packet : packetsMap.get(entry.getKey())){
-	      finserter.write("                <packet>" + packet + "</packet>\n");
-	    }
-	    finserter.write("           </packets>\n    </element>");
-        }
-        finserter.write("\n    </elementList>\n    <unrecognizedList>\n    </unrecognizedList>\n</correlationResult>");
-        finserter.close();
-     }
-     catch(IOException ex){
-         for(Map.Entry<String, Integer> entry:counterMap.entrySet()){
-             System.out.println(entry.getKey() + ":" + entry.getValue());
-         }
-     }
-   }
 
    @Override
    public void prepare(Map conf, TopologyContext context, OutputCollector collector) {
@@ -83,7 +61,9 @@ public class ChronoFilterBolt implements IRichBolt {
       }
 
       if(System.currentTimeMillis() - this.startTime >= this.emissionFrequency){
-         this.makeMetadataXML();
+         this.metadataOutID++;
+         this.metadataOutPath = this.metadataOutPathBase + this.metadataOutID + ".xml";
+         new CorrelationCreation(this.metadataOutPath, this.packetsMap, this.counterMap, null);
          this.collector.emit(new Values(this.metadataOutPath));
          this.startTime = System.currentTimeMillis();
       }

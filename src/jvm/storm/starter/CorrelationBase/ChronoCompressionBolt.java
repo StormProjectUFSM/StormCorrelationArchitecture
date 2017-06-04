@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import storm.starter.AlgorithmBase.PoliticsXML;
+import storm.starter.AlgorithmBase.CorrelationCreation;
 
 import org.apache.storm.tuple.Fields;
 import org.apache.storm.tuple.Values;
@@ -24,33 +25,6 @@ public class ChronoCompressionBolt implements IRichBolt {
    private List<String> compressMap, generalMap;
    private List<List<String>> compressPackets;
    private OutputCollector collector;
-
-   private void makeMetadataXML(){
-     try{
-        this.metadataOutID++;
-        this.metadataOutPath = this.metadataOutPathBase + this.metadataOutID + ".xml";
-        FileWriter finserter = new FileWriter(new File(this.metadataOutPath));
-        finserter.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<correlationResult>\n    <elementList>");
-        for(String Port : compressMap){
-            finserter.write("\n    <element>\n          <port>" + Port + "</port>\n           <counter></counter>\n           <packets>\n");
-	    for(String packet : compressPackets.get(compressMap.indexOf(Port))){
-	       finserter.write("                <packet>" + packet + "</packet>\n");
-	    }
-	    finserter.write("           </packets>\n</element>");
-        }
-        finserter.write("\n    </elementList>\n    <unrecognizedList>");
-	for (String data : generalMap){
-	    finserter.write("\n    <element>\n          <data>" + data + "</data>\n           <counter></counter>\n     </element>\n");
-	}
-        finserter.write("\n    </unrecognizedList>\n</correlationResult>");
-        finserter.close();
-     }
-     catch(IOException ex){
-         for(String IP : compressMap){
-             System.out.println(IP);
-         }
-     }
-   }
 
    @Override
    public void prepare(Map conf, TopologyContext context, OutputCollector collector) {
@@ -86,7 +60,9 @@ public class ChronoCompressionBolt implements IRichBolt {
       }
 
       if(System.currentTimeMillis() - this.startTime >= this.emissionFrequency){
-          this.makeMetadataXML();
+          this.metadataOutID++;
+          this.metadataOutPath = this.metadataOutPathBase + this.metadataOutID + ".xml";
+          new CorrelationCreation(this.metadataOutPath, this.compressPackets, this.compressMap, this.generalMap);
           this.collector.emit(new Values(this.metadataOutPath));
           this.startTime = System.currentTimeMillis();
       }
