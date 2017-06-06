@@ -17,7 +17,7 @@
 			<port>9249</port>
 		</portList>
 		<timeMSAmount>4000</timeMSAmount>
-		<eventsAmount>5</eventsAmount>
+		<eventsAmount>100</eventsAmount>
 	</correlationInfo>
 	<actionInfo>
 		<logLocal>/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/Log.txt</logLocal>

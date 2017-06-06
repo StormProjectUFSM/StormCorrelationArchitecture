@@ -12,6 +12,7 @@ import org.apache.storm.generated.KillOptions;
 import storm.starter.CorrelationBase.*;
 import storm.starter.ActionBase.*;
 import storm.starter.PacketBase.*;
+import storm.starter.TriggerBase.*;
 
 public class CounterTest {
    public static void main(String[] args) throws Exception{
@@ -27,9 +28,10 @@ public class CounterTest {
       builder.setSpout("call-log-reader-spout", kafkaSpout);
       builder.setBolt("call-log-selection-bolt", new SelectionBolt())
       .shuffleGrouping("call-log-reader-spout");
-      builder.setBolt("call-log-counter-bolt", new ChronoCounterBolt())
-      //builder.setBolt("call-log-counter-bolt", new EventCounterBolt())
+      builder.setBolt("call-log-trigger-bolt", new EventBolt())
       .fieldsGrouping("call-log-selection-bolt", new Fields("dstPort", "protocol", "size", "fullpacket"));
+      builder.setBolt("call-log-counter-bolt", new CounterBolt())
+      .fieldsGrouping("call-log-trigger-bolt", new Fields("dstPort", "protocol", "size", "fullpacket", "trigger"));
       builder.setBolt("call-log-bolt", new LogBolt())
       .fieldsGrouping("call-log-counter-bolt", new Fields("request"));
 
