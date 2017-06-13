@@ -29,10 +29,8 @@ public class SyslogBolt implements IRichBolt {
       String[] fullPacket = tuple.getString(0).split("      ");
 
       if (fullPacket.length == 2){
-	if ((fullPacket[0].split(" ").length == 3) && (fullPacket[0].split(" ")[1].length() == 2)){
 	  //SYSLOG
           this.collector.emit(new Values("", "", "", tuple.getString(0)));
-	}
       }
 
       collector.ack(tuple);
