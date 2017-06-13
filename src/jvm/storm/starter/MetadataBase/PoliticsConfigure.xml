@@ -2,8 +2,12 @@
 <politicsConf>
 	<confID>ConfTeste</confID>
 	<basicInfo>
-		<correlation>Counter</correlation>
-		<action>Log</action>
+		<correlation>correlationteste</correlation>
+		<action>actionteste</action>
+		<flows>
+			<flow>pcap</flow>
+			<flow>syslog</flow>
+		</flows>
 	</basicInfo>
 	<correlationInfo>
 		<checkList>

@@ -11,7 +11,7 @@ import org.apache.storm.spout.SchemeAsMultiScheme;
 import org.apache.storm.generated.KillOptions;
 import storm.starter.CorrelationBase.*;
 import storm.starter.ActionBase.*;
-import storm.starter.PacketBase.*;
+import storm.starter.FlowBase.*;
 import storm.starter.TriggerBase.*;
 
 public class FilterTest {
@@ -26,10 +26,10 @@ public class FilterTest {
 
       TopologyBuilder builder = new TopologyBuilder();
       builder.setSpout("call-log-reader-spout", kafkaSpout);
-      builder.setBolt("call-log-selection-bolt", new SelectionBolt())
+      builder.setBolt("call-log-pcap-bolt", new PcapBolt())
       .shuffleGrouping("call-log-reader-spout");
       builder.setBolt("call-log-trigger-bolt", new EventBolt())
-      .fieldsGrouping("call-log-selection-bolt", new Fields("dstPort", "protocol", "size", "fullpacket"));
+      .fieldsGrouping("call-log-pcap-bolt", new Fields("dstPort", "protocol", "size", "fullpacket"));
       builder.setBolt("call-log-filter-bolt", new FilterBolt())
       .fieldsGrouping("call-log-trigger-bolt", new Fields("dstPort", "protocol", "size", "fullpacket", "trigger"));
       builder.setBolt("call-log-bolt", new LogBolt())

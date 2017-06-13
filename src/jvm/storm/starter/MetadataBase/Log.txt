@@ -17,7 +17,7 @@ Counter: 4
 Packet: 126.79.12.119,227.13.23.6,20614,TCP,54,17662 > 20614 [SYN] Seq=0 Win=512 Len=0
 
 Port: 62418
-Counter: 3
+Counter: 4
 Packet: 242.81.69.30,239.135.93.14,62418,TCP,54,59757 > 62418 [SYN] Seq=0 Win=512 Len=0
 
 Port: 60911
@@ -65,11 +65,11 @@ Counter: 4
 Packet: 181.139.144.6,124.130.36.13,18424,TCP,54,25300 > 18424 [SYN] Seq=0 Win=512 Len=0
 
 Port: 4464
-Counter: 3
+Counter: 4
 Packet: 236.213.233.51,120.223.153.12,4464,TCP,54,ipcore > 4464 [SYN] Seq=0 Win=512 Len=0
 
 Port: 57471
-Counter: 3
+Counter: 4
 Packet: 63.78.121.38,178.156.62.76,57471,TCP,54,46286 > 57471 [SYN] Seq=0 Win=512 Len=0
 
 Port: 44932
@@ -97,7 +97,7 @@ Counter: 4
 Packet: 116.20.129.68,189.52.130.30,57757,TCP,54,12744 > 57757 [SYN] Seq=0 Win=512 Len=0
 
 Port: 4334
-Counter: 3
+Counter: 4
 Packet: 91.28.78.11,27.84.114.47,4334,TCP,54,30199 > 4334 [SYN] Seq=0 Win=512 Len=0
 
 Port: 17979
@@ -117,7 +117,7 @@ Counter: 4
 Packet: 120.239.131.106,45.222.153.107,41132,TCP,54,interserver > 41132 [SYN] Seq=0 Win=512 Len=0
 
 Port: 42224
-Counter: 3
+Counter: 4
 Packet: 133.27.192.7,196.241.88.57,42224,TCP,54,27591 > 42224 [SYN] Seq=0 Win=512 Len=0
 
 Port: 9249
@@ -169,7 +169,7 @@ Counter: 3
 Packet: 178.52.12.24,253.131.138.29,7355,TCP,54,33360 > 7355 [SYN] Seq=0 Win=512 Len=0
 
 Port: 40671
-Counter: 3
+Counter: 4
 Packet: 120.45.40.120,236.82.196.52,40671,TCP,54,30106 > 40671 [SYN] Seq=0 Win=512 Len=0
 
 Port: 62206
@@ -221,7 +221,7 @@ Counter: 3
 Packet: 115.108.40.83,91.34.108.52,vytalvaultvsmp,TCP,54,34790 > vytalvaultvsmp [SYN] Seq=0 Win=512 Len=0
 
 Port: 4246
-Counter: 3
+Counter: 4
 Packet: 95.17.24.9,119.240.16.114,4246,TCP,54,59716 > 4246 [SYN] Seq=0 Win=512 Len=0
 
 Port: 8967
@@ -245,7 +245,7 @@ Counter: 4
 Packet: 62.171.3.32,240.31.248.85,38294,TCP,54,28321 > 38294 [SYN] Seq=0 Win=512 Len=0
 
 Port: 17377
-Counter: 3
+Counter: 4
 Packet: 235.236.31.83,204.102.69.12,17377,TCP,54,63006 > 17377 [SYN] Seq=0 Win=512 Len=0
 
 Port: 21510
@@ -266,7 +266,7 @@ Counter: 3
 Packet: 195.9.153.76,152.179.195.25,58240,TCP,54,31729 > 58240 [SYN] Seq=0 Win=512 Len=0
 
 Port: 27054
-Counter: 3
+Counter: 4
 Packet: 207.83.17.67,93.86.21.75,27054,TCP,54,tekpls > 27054 [SYN] Seq=0 Win=512 Len=0
 
 Port: 33722
@@ -306,7 +306,7 @@ Counter: 4
 Packet: 207.220.169.119,202.148.184.90,4399,TCP,54,24104 > 4399 [SYN] Seq=0 Win=512 Len=0
 
 Port: 39653
-Counter: 3
+Counter: 4
 Packet: 110.51.220.113,244.105.148.31,39653,TCP,54,33195 > 39653 [SYN] Seq=0 Win=512 Len=0
 
 Port: dsmcc-download
@@ -346,7 +346,7 @@ Counter: 4
 Packet: 58.133.194.0,80.22.70.67,16417,TCP,54,59459 > 16417 [SYN] Seq=0 Win=512 Len=0
 
 Port: 39003
-Counter: 3
+Counter: 4
 Packet: 39.128.198.46,208.77.172.8,39003,TCP,54,53964 > 39003 [SYN] Seq=0 Win=512 Len=0
 
 Port: 38553
@@ -399,580 +399,4 @@ Packet: 87.123.82.40,0.102.56.75,18846,TCP,54,22748 > 18846 [SYN] Seq=0 Win=512 
 
 
 ============= GENERAL LOG =============
-
-Data: 
-Counter: 4
-
-Data: May 10 20:15:30	 DHCP      	INFO   	DHCPS:Recv DISCOVER from EA:08:6B:D2:0D:16
-Counter: 2
-
-Data: May 10 21:22:25	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.101
-Counter: 2
-
-Data: May 10 22:44:16	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.108
-Counter: 1
-
-Data: May 10 20:11:18	 DHCP      	INFO   	DHCPC DHCP Service unavailable, recv no OFFER
-Counter: 2
-
-Data: May 10 20:23:21	 DHCP      	INFO   	DHCPS:Recv REQUEST from 00:B3:62:15:ED:55
-Counter: 2
-
-Data: May 10 20:40:35	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.101
-Counter: 2
-
-Data: May 10 22:30:21	 DHCP      	INFO   	DHCPS:Send OFFER with ip 192.168.1.105
-Counter: 2
-
-Data: May 10 20:11:14	 DHCP      	INFO   	DHCPC Send DISCOVER with request ip C0A8000A and unicast flag 1
-Counter: 2
-
-Data: May 10 22:44:16	 DHCP      	INFO   	DHCPS:Send OFFER with ip 192.168.1.108
-Counter: 1
-
-Data: May 10 22:28:33	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.104
-Counter: 2
-
-Data: May 10 20:12:19	 DHCP      	INFO   	DHCPC Send REQUEST to server c0a80001 with request ip c0a8000a
-Counter: 2
-
-Data: May 10 20:18:43	 DHCP      	INFO   	DHCPS:Recv REQUEST from E4:8B:7F:78:8D:9E
-Counter: 2
-
-Data: May 10 22:04:25	 DHCP      	INFO   	DHCPS:Recv REQUEST from EA:08:6B:D2:0D:16
-Counter: 2
-
-Data: May 10 23:12:26	 DHCP      	INFO   	DHCPC Send REQUEST to server c0a80001 with request ip c0a8000a
-Counter: 1
-
-Data: May 10 22:44:04	 DHCP      	INFO   	DHCPS:Recv DISCOVER from 5C:C9:D3:3D:DA:1A
-Counter: 1
-
-Data: May 10 22:44:08	 DHCP      	INFO   	DHCPS:Recv DISCOVER from 5C:C9:D3:3D:DA:1A
-Counter: 1
-
-Data: May 10 20:11:25	 DHCP      	INFO   	DHCPC Entering released state
-Counter: 2
-
-Data: May 10 21:10:44	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.106
-Counter: 2
-
-Data: May 10 22:04:20	 DHCP      	INFO   	DHCPS:Send OFFER with ip 192.168.1.101
-Counter: 2
-
-Data: May 10 20:12:21	 DHCP      	INFO   	DHCPC:GET ip:c0a8000a mask:ffffff00 gateway:c0a80001 dns1:bd077814 dns2:bd077810 static route:0
-Counter: 2
-
-Data: May 10 23:17:14	 DHCP      	INFO   	DHCPS:Recv REQUEST from 5C:8D:4E:0F:77:81
-Counter: 1
-
-Data: May 10 21:44:21	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.103
-Counter: 2
-
-Data: May 10 20:40:47	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.102
-Counter: 2
-
-Data: May 10 22:30:21	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.105
-Counter: 2
-
-Data: May 10 20:18:43	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.103
-Counter: 4
-
-Data: May 10 20:46:16	 DHCP      	INFO   	DHCPS:Recv REQUEST from D8:5D:E2:DB:12:7B
-Counter: 2
-
-Data: May 10 21:12:15	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.100
-Counter: 2
-
-Data: May 10 21:33:08	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.106
-Counter: 2
-
-Data: May 10 20:11:14	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.107
-Counter: 2
-
-Data: May 10 20:12:08	 DHCP      	INFO   	DHCPS:Recv REQUEST from 5C:8D:4E:0F:77:81
-Counter: 2
-
-Data: May 10 22:30:24	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.105
-Counter: 2
-
-Data: May 10 22:31:18	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.107
-Counter: 1
-
-Data: May 10 20:43:31	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.103
-Counter: 2
-
-Data: May 10 20:50:13	 DHCP      	INFO   	DHCPS:Recv REQUEST from 00:B3:62:15:ED:55
-Counter: 2
-
-Data: May 10 20:11:29	 DHCP      	INFO   	DHCPC Send DISCOVER with request ip C0A8000A and unicast flag 0
-Counter: 2
-
-Data: May 10 20:40:13	 DHCP      	INFO   	DHCPS:Recv REQUEST from 00:B3:62:15:ED:55
-Counter: 2
-
-Data: May 10 20:40:35	 DHCP      	INFO   	DHCPS:Send OFFER with ip 192.168.1.101
-Counter: 2
-
-Data: May 10 20:29:07	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.103
-Counter: 2
-
-Data: May 10 20:42:22	 DHCP      	INFO   	DHCPC:GET ip:c0a8000a mask:ffffff00 gateway:c0a80001 dns1:bd077814 dns2:bd077810 static route:0
-Counter: 2
-
-Data: May 10 22:28:33	 DHCP      	INFO   	DHCPS:Recv REQUEST from C4:E9:84:C8:10:60
-Counter: 2
-
-Data: May 10 22:31:17	 DHCP      	INFO   	DHCPS:Send NAK
-Counter: 1
-
-Data: May 10 20:40:32	 DHCP      	INFO   	DHCPS:Recv DISCOVER from EA:08:6B:D2:0D:16
-Counter: 2
-
-Data: May 10 21:12:23	 DHCP      	INFO   	DHCPC Recv ACK from server c0a80001 with ip c0a8000a lease time 3600
-Counter: 2
-
-Data: # 			       TL-WR841N  System Log 
-Counter: 2
-
-Data: May 10 20:11:16	 DHCP      	INFO   	DHCPC Send DISCOVER with request ip C0A8000A and unicast flag 1
-Counter: 2
-
-Data: May 10 20:15:32	 DHCP      	INFO   	DHCPS:Recv REQUEST from EA:08:6B:D2:0D:16
-Counter: 2
-
-Data: May 10 22:12:25	 DHCP      	INFO   	DHCPC Recv ACK from server c0a80001 with ip c0a8000a lease time 3600
-Counter: 2
-
-Data: May 10 23:05:44	 DHCP      	INFO   	DHCPS:Send OFFER with ip 192.168.1.105
-Counter: 1
-
-Data: May 10 20:25:33	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.102
-Counter: 2
-
-Data: May 10 22:57:26	 DHCP      	INFO   	DHCPS:Recv REQUEST from 2C:AE:2B:08:3D:51
-Counter: 1
-
-Data: May 10 21:20:52	 DHCP      	INFO   	DHCPS:Send OFFER with ip 192.168.1.101
-Counter: 2
-
-Data: May 10 20:47:31	 DHCP      	INFO   	DHCPS:Recv REQUEST from 00:B3:62:15:ED:55
-Counter: 2
-
-Data: May 10 23:12:29	 DHCP      	INFO   	DHCPC:GET ip:c0a8000a mask:ffffff00 gateway:c0a80001 dns1:bd077814 dns2:bd077810 static route:0
-Counter: 1
-
-Data: May 10 22:31:18	 DHCP      	INFO   	DHCPS:Recv REQUEST from 2C:AE:2B:08:3D:51
-Counter: 2
-
-Data: May 10 22:31:18	 DHCP      	INFO   	DHCPS:Server id and requested ip not found
-Counter: 1
-
-Data: May 10 20:20:59	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.102
-Counter: 2
-
-Data: May 10 21:12:15	 DHCP      	INFO   	DHCPS:Recv REQUEST from 5C:8D:4E:0F:77:81
-Counter: 2
-
-Data: May 10 22:44:16	 DHCP      	INFO   	DHCPS:Recv DISCOVER from 5C:C9:D3:3D:DA:1A
-Counter: 1
-
-Data: May 10 22:04:22	 DHCP      	INFO   	DHCPS:Recv DISCOVER from EA:08:6B:D2:0D:16
-Counter: 2
-
-Data: May 10 20:12:16	 DHCP      	INFO   	DHCPS:Recv REQUEST from 5C:8D:4E:0F:77:81
-Counter: 2
-
-Data: May 10 20:20:59	 DHCP      	INFO   	DHCPS:Recv REQUEST from 00:B3:62:15:ED:55
-Counter: 2
-
-Data: May 10 23:05:42	 DHCP      	INFO   	DHCPS:Recv REQUEST from EE:08:6B:08:3D:51
-Counter: 2
-
-Data: May 10 20:25:33	 DHCP      	INFO   	DHCPS:Recv REQUEST from 00:B3:62:15:ED:55
-Counter: 2
-
-Data: May 10 21:10:44	 DHCP      	INFO   	DHCPS:Recv REQUEST from 74:29:AF:30:82:55
-Counter: 2
-
-Data: # H-Ver = WR841N v9 00000000 : S-Ver = 3.14.4 Build 140122 Rel.61200n 
-Counter: 2
-
-Data: May 10 20:11:10	 DHCP      	INFO   	DHCPC Send DISCOVER with request ip C0A8000A and unicast flag 0
-Counter: 2
-
-Data: May 10 21:48:17	 DHCP      	INFO   	DHCPS:Recv REQUEST from 5C:8D:4E:0F:77:81
-Counter: 2
-
-Data: May 10 22:16:33	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.107
-Counter: 2
-
-Data: May 10 20:12:19	 DHCP      	INFO   	DHCPC Recv OFFER from server c0a80001 with ip c0a8000a
-Counter: 2
-
-Data: May 10 22:42:27	 DHCP      	NOTICE 	Dynamic IP(DHCP Client) obtained an IP successfully
-Counter: 1
-
-Data: May 10 20:46:16	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.110
-Counter: 2
-
-Data: May 10 21:48:17	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.100
-Counter: 2
-
-Data: May 10 22:44:08	 DHCP      	INFO   	DHCPS:Send OFFER with ip 192.168.1.108
-Counter: 1
-
-Data: May 10 21:20:52	 DHCP      	INFO   	DHCPS:Recv DISCOVER from EA:08:6B:D2:0D:16
-Counter: 2
-
-Data: May 10 23:06:44	 DHCP      	INFO   	DHCPS:Recv REQUEST from 2C:AE:2B:08:3D:51
-Counter: 1
-
-Data: May 10 22:31:18	 DHCP      	INFO   	DHCPS:Send OFFER with ip 192.168.1.107
-Counter: 1
-
-Data: May 10 22:30:24	 DHCP      	INFO   	DHCPS:Recv REQUEST from EE:08:6B:08:3D:51
-Counter: 2
-
-Data: May 10 20:11:31	 DHCP      	INFO   	DHCPC Send DISCOVER with request ip C0A8000A and unicast flag 0
-Counter: 2
-
-Data: May 10 20:29:07	 DHCP      	INFO   	DHCPS:Recv REQUEST from E4:8B:7F:78:8D:9E
-Counter: 2
-
-Data: May 10 20:20:04	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.102
-Counter: 2
-
-Data: May 10 20:39:01	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.103
-Counter: 2
-
-Data: May 10 20:42:22	 DHCP      	INFO   	DHCPC Recv ACK from server c0a80001 with ip c0a8000a lease time 3600
-Counter: 2
-
-Data: May 10 22:12:25	 DHCP      	INFO   	DHCPC:GET ip:c0a8000a mask:ffffff00 gateway:c0a80001 dns1:bd077814 dns2:bd077810 static route:0
-Counter: 2
-
-Data: May 10 21:22:19	 DHCP      	INFO   	DHCPS:Recv DISCOVER from EA:08:6B:D2:0D:16
-Counter: 2
-
-Data: May 10 20:44:22	 DHCP      	INFO   	DHCPS:Recv REQUEST from E4:8B:7F:78:8D:9E
-Counter: 2
-
-Data: May 10 21:44:21	 DHCP      	INFO   	DHCPS:Recv REQUEST from E4:8B:7F:78:8D:9E
-Counter: 2
-
-Data: May 10 21:48:16	 DHCP      	INFO   	DHCPS:Send OFFER with ip 192.168.1.100
-Counter: 2
-
-Data: May 10 22:57:26	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.107
-Counter: 1
-
-Data: May 10 22:44:16	 DHCP      	INFO   	DHCPS:Recv REQUEST from 5C:C9:D3:3D:DA:1A
-Counter: 1
-
-Data: May 10 21:52:10	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.107
-Counter: 2
-
-Data: May 10 20:19:18	 DHCP      	INFO   	DHCPS:Recv DISCOVER from EA:08:6B:D2:0D:16
-Counter: 2
-
-Data: May 10 22:42:26	 DHCP      	INFO   	DHCPC Recv ACK from server c0a80001 with ip c0a8000a lease time 3600
-Counter: 1
-
-Data: May 10 22:31:18	 DHCP      	INFO   	DHCPS:c0a8016b 0
-Counter: 1
-
-Data: May 10 21:48:16	 DHCP      	INFO   	DHCPS:Recv DISCOVER from 5C:8D:4E:0F:77:81
-Counter: 2
-
-Data: May 10 22:04:22	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.101
-Counter: 2
-
-Data: May 10 22:31:17	 DHCP      	INFO   	DHCPS:Recv REQUEST from 2C:AE:2B:08:3D:51
-Counter: 2
-
-Data: May 10 23:05:42	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.105
-Counter: 2
-
-Data: May 10 20:19:26	 DHCP      	INFO   	DHCPS:Recv REQUEST from EA:08:6B:D2:0D:16
-Counter: 2
-
-Data: May 10 20:19:26	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.101
-Counter: 2
-
-Data: May 10 20:11:13	 DHCP      	INFO   	DHCPS:Recv REQUEST from 2C:AE:2B:08:3D:51
-Counter: 2
-
-Data: May 10 20:20:02	 DHCP      	INFO   	DHCPS:Recv DISCOVER from 00:B3:62:15:ED:55
-Counter: 2
-
-Data: May 10 20:40:13	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.102
-Counter: 2
-
-Data: May 10 21:21:03	 DHCP      	INFO   	DHCPS:Recv REQUEST from EA:08:6B:D2:0D:16
-Counter: 2
-
-Data: May 10 21:33:08	 DHCP      	INFO   	DHCPS:Recv REQUEST from 74:29:AF:30:82:55
-Counter: 2
-
-Data: May 10 23:17:14	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.100
-Counter: 1
-
-Data: May 10 21:42:24	 DHCP      	INFO   	DHCPC:GET ip:c0a8000a mask:ffffff00 gateway:c0a80001 dns1:bd077814 dns2:bd077810 static route:0
-Counter: 2
-
-Data: May 10 20:12:06	 DHCP      	INFO   	DHCPS:Recv DISCOVER from 5C:8D:4E:0F:77:81
-Counter: 2
-
-Data: May 10 21:22:23	 DHCP      	INFO   	DHCPS:Recv REQUEST from EA:08:6B:D2:0D:16
-Counter: 2
-
-Data: May 10 22:04:25	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.101
-Counter: 2
-
-Data: May 10 22:28:32	 DHCP      	INFO   	DHCPS:Recv DISCOVER from C4:E9:84:C8:10:60
-Counter: 2
-
-Data: May 10 23:05:48	 DHCP      	INFO   	DHCPS:Send OFFER with ip 192.168.1.105
-Counter: 1
-
-Data: May 10 23:05:57	 DHCP      	INFO   	DHCPS:Recv DISCOVER from EE:08:6B:08:3D:51
-Counter: 1
-
-Data: May 10 20:11:35	 DHCP      	INFO   	DHCPC Send DISCOVER with request ip C0A8000A and unicast flag 1
-Counter: 2
-
-Data: May 10 20:43:31	 DHCP      	INFO   	DHCPS:Recv REQUEST from E4:8B:7F:78:8D:9E
-Counter: 2
-
-Data: May 10 21:22:19	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.101
-Counter: 2
-
-Data: May 10 20:47:31	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.102
-Counter: 2
-
-Data: May 10 20:23:21	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.102
-Counter: 2
-
-Data: May 10 22:44:05	 DHCP      	INFO   	DHCPS:Send OFFER with ip 192.168.1.108
-Counter: 1
-
-Data: May 10 20:46:16	 DHCP      	INFO   	DHCPS:Send OFFER with ip 192.168.1.110
-Counter: 2
-
-Data: May 10 22:32:49	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.106
-Counter: 1
-
-Data: May 10 20:39:47	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.107
-Counter: 2
-
-Data: May 10 21:12:23	 DHCP      	INFO   	DHCPC:GET ip:c0a8000a mask:ffffff00 gateway:c0a80001 dns1:bd077814 dns2:bd077810 static route:0
-Counter: 2
-
-Data: May 10 21:12:23	 DHCP      	NOTICE 	Dynamic IP(DHCP Client) obtained an IP successfully
-Counter: 2
-
-Data: May 10 20:12:21	 DHCP      	NOTICE 	Dynamic IP(DHCP Client) obtained an IP successfully
-Counter: 2
-
-Data: May 10 22:12:25	 DHCP      	NOTICE 	Dynamic IP(DHCP Client) obtained an IP successfully
-Counter: 2
-
-Data: May 10 20:40:47	 DHCP      	INFO   	DHCPS:Recv REQUEST from 00:B3:62:15:ED:55
-Counter: 2
-
-Data: May 10 22:42:24	 DHCP      	INFO   	DHCPC Send REQUEST to server c0a80001 with request ip c0a8000a
-Counter: 1
-
-Data: May 10 22:42:26	 DHCP      	INFO   	DHCPC:GET ip:c0a8000a mask:ffffff00 gateway:c0a80001 dns1:bd077814 dns2:bd077810 static route:0
-Counter: 1
-
-Data: # Time = 2017-04-10 23:26:21 11748s
-Counter: 2
-
-Data: May 10 20:12:19	 DHCP      	INFO   	DHCPC Send DISCOVER with request ip C0A8000A and unicast flag 0
-Counter: 2
-
-Data: May 10 20:18:42	 DHCP      	INFO   	DHCPS:Recv REQUEST from E4:8B:7F:78:8D:9E
-Counter: 2
-
-Data: May 10 20:11:06	 DHCP      	INFO   	DHCPC perform a DHCP renew
-Counter: 2
-
-Data: May 10 20:20:04	 DHCP      	INFO   	DHCPS:Recv REQUEST from 00:B3:62:15:ED:55
-Counter: 2
-
-Data: May 10 21:22:23	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.101
-Counter: 2
-
-Data: May 10 20:42:22	 DHCP      	NOTICE 	Dynamic IP(DHCP Client) obtained an IP successfully
-Counter: 2
-
-Data: May 10 22:16:33	 DHCP      	INFO   	DHCPS:Recv REQUEST from 2C:AE:2B:08:3D:51
-Counter: 2
-
-Data: May 10 20:39:01	 DHCP      	INFO   	DHCPS:Recv REQUEST from E4:8B:7F:78:8D:9E
-Counter: 2
-
-Data: May 10 22:12:23	 DHCP      	INFO   	DHCPC Send REQUEST to server c0a80001 with request ip c0a8000a
-Counter: 2
-
-Data: May 10 21:52:10	 DHCP      	INFO   	DHCPS:Recv REQUEST from 2C:AE:2B:08:3D:51
-Counter: 2
-
-Data: May 10 20:40:35	 DHCP      	INFO   	DHCPS:Recv REQUEST from EA:08:6B:D2:0D:16
-Counter: 2
-
-Data: May 10 20:12:21	 DHCP      	INFO   	DHCPC Recv ACK from server c0a80001 with ip c0a8000a lease time 3600
-Counter: 2
-
-Data: May 10 20:11:27	 DHCP      	INFO   	DHCPC Send DISCOVER with request ip C0A8000A and unicast flag 0
-Counter: 2
-
-Data: May 10 22:30:21	 DHCP      	INFO   	DHCPS:Recv REQUEST from EE:08:6B:08:3D:51
-Counter: 2
-
-Data: May 10 20:20:03	 DHCP      	INFO   	DHCPS:Send OFFER with ip 192.168.1.102
-Counter: 2
-
-Data: May 10 21:22:19	 DHCP      	INFO   	DHCPS:Send OFFER with ip 192.168.1.101
-Counter: 2
-
-Data: May 10 20:42:20	 DHCP      	INFO   	DHCPC Send REQUEST to server c0a80001 with request ip c0a8000a
-Counter: 2
-
-Data: May 10 20:46:15	 DHCP      	INFO   	DHCPS:Recv DISCOVER from D8:5D:E2:DB:12:7B
-Counter: 2
-
-Data: May 10 20:11:37	 DHCP      	INFO   	DHCPC Send DISCOVER with request ip C0A8000A and unicast flag 1
-Counter: 2
-
-Data: May 10 21:21:03	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.101
-Counter: 2
-
-Data: May 10 20:11:03	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.106
-Counter: 2
-
-Data: May 10 22:31:18	 DHCP      	INFO   	DHCPS:Send NAK
-Counter: 1
-
-Data: May 10 20:44:22	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.103
-Counter: 2
-
-Data: May 10 20:12:08	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.100
-Counter: 2
-
-Data: May 10 20:15:32	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.101
-Counter: 2
-
-Data: May 10 22:32:49	 DHCP      	INFO   	DHCPS:Recv REQUEST from 74:29:AF:30:82:55
-Counter: 1
-
-Data: May 10 23:05:48	 DHCP      	INFO   	DHCPS:Recv DISCOVER from EE:08:6B:08:3D:51
-Counter: 1
-
-Data: # L = 192.168.1.1 : M = 255.255.255.0
-Counter: 2
-
-Data: May 10 22:04:20	 DHCP      	INFO   	DHCPS:Recv DISCOVER from EA:08:6B:D2:0D:16
-Counter: 2
-
-Data: May 10 21:22:19	 DHCP      	INFO   	DHCPS:Recv REQUEST from EA:08:6B:D2:0D:16
-Counter: 2
-
-Data: May 10 21:42:25	 DHCP      	NOTICE 	Dynamic IP(DHCP Client) obtained an IP successfully
-Counter: 2
-
-Data: May 10 23:05:44	 DHCP      	INFO   	DHCPS:Recv DISCOVER from EE:08:6B:08:3D:51
-Counter: 1
-
-Data: May 10 20:12:16	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.100
-Counter: 2
-
-Data: May 10 22:31:18	 DHCP      	INFO   	DHCPS:Recv DISCOVER from 2C:AE:2B:08:3D:51
-Counter: 1
-
-Data: May 10 20:11:08	 DHCP      	INFO   	DHCPC Send DISCOVER with request ip C0A8000A and unicast flag 0
-Counter: 2
-
-Data: May 10 20:50:13	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.102
-Counter: 2
-
-Data: May 10 23:05:57	 DHCP      	INFO   	DHCPS:Send OFFER with ip 192.168.1.105
-Counter: 1
-
-Data: May 10 22:59:52	 DHCP      	INFO   	DHCPS:Recv REQUEST from 5C:8D:4E:0F:77:81
-Counter: 1
-
-Data: May 10 22:04:22	 DHCP      	INFO   	DHCPS:Recv REQUEST from EA:08:6B:D2:0D:16
-Counter: 2
-
-Data: May 10 23:12:29	 DHCP      	INFO   	DHCPC Recv ACK from server c0a80001 with ip c0a8000a lease time 3600
-Counter: 1
-
-Data: # W1 = DHCP : W = 192.168.0.10 : M = 255.255.255.0 : G = 192.168.0.1
-Counter: 2
-
-Data: May 10 22:31:17	 DHCP      	INFO   	DHCPS:Server id not found and request an invalid ip
-Counter: 1
-
-Data: May 10 21:22:25	 DHCP      	INFO   	DHCPS:Recv REQUEST from EA:08:6B:D2:0D:16
-Counter: 2
-
-Data: May 10 23:06:44	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.107
-Counter: 1
-
-Data: May 10 22:59:52	 DHCP      	INFO   	DHCPS:Send ACK to 192.168.1.100
-Counter: 1
-
-Data: May 10 22:04:22	 DHCP      	INFO   	DHCPS:Send OFFER with ip 192.168.1.101
-Counter: 2
-
-Data: May 10 20:15:31	 DHCP      	INFO   	DHCPS:Send OFFER with ip 192.168.1.101
-Counter: 2
-
-Data: May 10 20:12:07	 DHCP      	INFO   	DHCPS:Send OFFER with ip 192.168.1.100
-Counter: 2
-
-Data: May 10 21:42:24	 DHCP      	INFO   	DHCPC Recv ACK from server c0a80001 with ip c0a8000a lease time 3600
-Counter: 2
-
-Data: May 10 23:12:29	 DHCP      	NOTICE 	Dynamic IP(DHCP Client) obtained an IP successfully
-Counter: 1
-
-Data: May 10 20:11:06	 DHCP      	INFO   	DHCPC Send DISCOVER with request ip C0A8000A and unicast flag 0
-Counter: 2
-
-Data: May 10 20:11:27	 DHCP      	INFO   	DHCPC perform a DHCP renew
-Counter: 2
-
-Data: May 10 22:30:20	 DHCP      	INFO   	DHCPS:Recv DISCOVER from EE:08:6B:08:3D:51
-Counter: 2
-
-Data: May 10 22:28:33	 DHCP      	INFO   	DHCPS:Send OFFER with ip 192.168.1.104
-Counter: 2
-
-Data: ####################################################################
-Counter: 4
-
-Data: May 10 21:12:21	 DHCP      	INFO   	DHCPC Send REQUEST to server c0a80001 with request ip c0a8000a
-Counter: 2
-
-Data: May 10 21:42:22	 DHCP      	INFO   	DHCPC Send REQUEST to server c0a80001 with request ip c0a8000a
-Counter: 2
-
-Data: May 10 20:19:18	 DHCP      	INFO   	DHCPS:Send OFFER with ip 192.168.1.101
-Counter: 2
-
-Data: May 10 20:39:47	 DHCP      	INFO   	DHCPS:Recv REQUEST from 2C:AE:2B:08:3D:51
-Counter: 2
-
-Data: May 10 20:40:32	 DHCP      	INFO   	DHCPS:Send OFFER with ip 192.168.1.101
-Counter: 2
-
-Data: May 10 20:40:35	 DHCP      	INFO   	DHCPS:Recv DISCOVER from EA:08:6B:D2:0D:16
-Counter: 2
-
-Data: May 10 20:11:39	 DHCP      	INFO   	DHCPC DHCP Service unavailable, recv no OFFER
-Counter: 2
 
