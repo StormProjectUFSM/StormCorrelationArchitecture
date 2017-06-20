@@ -7,8 +7,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import storm.starter.AlgorithmBase.PoliticsXML;
 import storm.starter.AlgorithmBase.CorrelationCreation;
+import storm.starter.AlgorithmBase.PoliticsXML;
 
 import org.apache.storm.tuple.Fields;
 import org.apache.storm.tuple.Values;
@@ -19,17 +19,23 @@ import org.apache.storm.topology.OutputFieldsDeclarer;
 import org.apache.storm.tuple.Tuple;
 
 public class CompressionBolt implements IRichBolt {
-   private PoliticsXML configuration;
    private long metadataOutID;
    private String metadataOutPathBase, metadataOutPath;
+   private String politicsPath, basePath;
+   private PoliticsXML configuration;
    private List<String> compressMap, generalMap;
    private List<List<String>> compressPackets;
    private OutputCollector collector;
 
+   public CompressionBolt(String politicsPath, String basePath){
+      this.politicsPath = politicsPath;
+      this.basePath = basePath;
+   }
+
    @Override
    public void prepare(Map conf, TopologyContext context, OutputCollector collector) {
-      this.configuration = new PoliticsXML("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/PoliticsConfigure.xml");
-      this.metadataOutPathBase = "/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/" + this.configuration.getConfID();
+      this.configuration = new PoliticsXML(this.politicsPath);
+      this.metadataOutPathBase = this.basePath + this.configuration.getConfID();
       this.metadataOutID = 0;
       this.compressMap = new ArrayList<String>();
       this.generalMap = new ArrayList<String>();

@@ -26,13 +26,13 @@ public class FilterTest {
 
       TopologyBuilder builder = new TopologyBuilder();
       builder.setSpout("call-log-reader-spout", kafkaSpout);
-      builder.setBolt("call-log-pcap-bolt", new PcapBolt())
+      builder.setBolt("call-log-pcap-bolt", new PcapBolt("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/PoliticsConfigure.xml"))
       .shuffleGrouping("call-log-reader-spout");
-      builder.setBolt("call-log-trigger-bolt", new EventBolt())
+      builder.setBolt("call-log-trigger-bolt", new EventBolt("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/PoliticsConfigure.xml"))
       .fieldsGrouping("call-log-pcap-bolt", new Fields("dstPort", "protocol", "size", "fullpacket"));
-      builder.setBolt("call-log-filter-bolt", new FilterBolt())
+      builder.setBolt("call-log-filter-bolt", new FilterBolt("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/PoliticsConfigure.xml", "/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/"))
       .fieldsGrouping("call-log-trigger-bolt", new Fields("dstPort", "protocol", "size", "fullpacket", "trigger"));
-      builder.setBolt("call-log-bolt", new LogBolt())
+      builder.setBolt("call-log-bolt", new LogBolt("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/PoliticsConfigure.xml"))
       .fieldsGrouping("call-log-filter-bolt", new Fields("request"));
 
       LocalCluster cluster = new LocalCluster();

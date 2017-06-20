@@ -16,13 +16,18 @@ import org.apache.storm.topology.OutputFieldsDeclarer;
 import org.apache.storm.tuple.Tuple;
 
 public class ChronoBolt implements IRichBolt {
+   private String politicsPath;
    private PoliticsXML configuration;
    private long startTime, emissionFrequency;
    private OutputCollector collector;
 
+   public ChronoBolt(String politicsPath){
+      this.politicsPath = politicsPath;
+   }
+
    @Override
    public void prepare(Map conf, TopologyContext context, OutputCollector collector) {
-      this.configuration = new PoliticsXML("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/PoliticsConfigure.xml");
+      this.configuration = new PoliticsXML(this.politicsPath);
       this.startTime = System.currentTimeMillis();
       this.emissionFrequency = this.configuration.getCITimeMSAmount();
       this.collector = collector;
