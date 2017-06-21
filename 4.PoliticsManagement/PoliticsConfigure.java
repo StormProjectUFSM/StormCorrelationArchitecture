@@ -41,8 +41,8 @@ public class PoliticsConfigure{
 			}
 			this.stormTopology.write(";\n");
 
-			this.stormTopology.write("		builder.setBolt(\"call-log-correlation-bolt\", new " + this.politics.getBICorrelation() + "(\"" + basePath + politicsFile + "\",\"" + basePath + "\")).fieldsGrouping(\"call-log-trigger-bolt\", new Fields(\"dstPort\", \"protocol\", \"size\", \"fullpacket\", \"trigger\"));\n");
-			this.stormTopology.write("		builder.setBolt(\"call-log-action-bolt\", new " + this.politics.getBIAction() + "(\"" + basePath + politicsFile + "\")).fieldsGrouping(\"call-log-correlation-bolt\", new Fields(\"request\"));\n");
+			this.stormTopology.write("		builder.setBolt(\"call-log-correlation-bolt\", new " + this.politics.getBICorrelation() + "(\"" + basePath + "\",\"" + politicsFile + "\")).fieldsGrouping(\"call-log-trigger-bolt\", new Fields(\"dstPort\", \"protocol\", \"size\", \"fullpacket\", \"trigger\"));\n");
+			this.stormTopology.write("		builder.setBolt(\"call-log-action-bolt\", new " + this.politics.getBIAction() + "(\"" + basePath + "\",\"" + politicsFile + "\")).fieldsGrouping(\"call-log-correlation-bolt\", new Fields(\"request\"));\n");
 			this.stormTopology.write("\n        LocalCluster cluster = new LocalCluster();\n");
 			this.stormTopology.write("		cluster.submitTopology(\"" + this.politics.getConfID() + "\", config, builder.createTopology());\n");
 

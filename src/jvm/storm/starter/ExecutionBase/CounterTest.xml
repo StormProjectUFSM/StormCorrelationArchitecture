@@ -2,7 +2,7 @@
 <politicsConf>
 	<confID>CounterTest</confID>
 	<basicInfo>
-		<trigger>ChronoBolt</trigger>
+		<trigger>EventBolt</trigger>
 		<correlation>CounterBolt</correlation>
 		<action>LogBolt</action>
 		<flows>
@@ -21,11 +21,11 @@
 			<port>54476</port>
 			<port>9249</port>
 		</portList>
-		<timeMSAmount>4000</timeMSAmount>
-		<eventsAmount></eventsAmount>
+		<timeMSAmount></timeMSAmount>
+		<eventsAmount>10</eventsAmount>
 	</correlationInfo>
 	<actionInfo>
-		<logLocal>/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/Log.txt</logLocal>
+		<logLocal>/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase/Log.txt</logLocal>
 		<email></email>
 	</actionInfo>
 </politicsConf>

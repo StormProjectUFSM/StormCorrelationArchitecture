@@ -20,22 +20,25 @@ import org.apache.storm.tuple.Tuple;
 
 public class CompressionBolt implements IRichBolt {
    private long metadataOutID;
-   private String metadataOutPathBase, metadataOutPath;
-   private String politicsPath, basePath;
+   private String metadataOutName, metadataOutPath;
+   private String basePath, politicsPath, metadataPath, politicsName;
    private PoliticsXML configuration;
    private List<String> compressMap, generalMap;
    private List<List<String>> compressPackets;
    private OutputCollector collector;
 
-   public CompressionBolt(String politicsPath, String basePath){
-      this.politicsPath = politicsPath;
+   public CompressionBolt(String basePath, String politicsName){
+      this.politicsPath = basePath + politicsName;
       this.basePath = basePath;
+      this.politicsName = politicsName;
+      this.metadataPath = basePath + politicsName + "TMP";
+      new File(this.metadataPath).mkdir();
    }
 
    @Override
    public void prepare(Map conf, TopologyContext context, OutputCollector collector) {
       this.configuration = new PoliticsXML(this.politicsPath);
-      this.metadataOutPathBase = this.basePath + this.configuration.getConfID();
+      this.metadataOutName = this.configuration.getConfID();
       this.metadataOutID = 0;
       this.compressMap = new ArrayList<String>();
       this.generalMap = new ArrayList<String>();
@@ -65,7 +68,7 @@ public class CompressionBolt implements IRichBolt {
 
       if(tuple.getString(4) != null){
           this.metadataOutID++;
-          this.metadataOutPath = this.metadataOutPathBase + this.metadataOutID + ".xml";
+          this.metadataOutPath = this.metadataPath + "/" + this.metadataOutName + this.metadataOutID + ".xml";
           new CorrelationCreation(this.metadataOutPath, this.compressPackets, this.compressMap, this.generalMap);
           this.collector.emit(new Values(this.metadataOutPath));
       }

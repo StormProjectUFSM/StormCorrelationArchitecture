@@ -23,22 +23,25 @@ import org.apache.storm.tuple.Tuple;
 
 public class FilterBolt implements IRichBolt {
    private long metadataOutID;
-   private String metadataOutPathBase, metadataOutPath;
-   private String politicsPath, basePath;
+   private String metadataOutName, metadataOutPath;
+   private String basePath, politicsPath, metadataPath, politicsName;
    private PoliticsXML configuration;
    private Map<String, Integer> counterMap;
    private Map<String, List<String>> packetsMap;
    private OutputCollector collector;
 
-   public FilterBolt(String politicsPath, String basePath){
+   public FilterBolt(String basePath, String politicsName){
+      this.politicsPath = basePath + politicsName;
       this.basePath = basePath;
-      this.politicsPath = politicsPath;
+      this.politicsName = politicsName;
+      this.metadataPath = basePath + politicsName + "TMP";
+      new File(this.metadataPath).mkdir();
    }
 
    @Override
    public void prepare(Map conf, TopologyContext context, OutputCollector collector) {
       this.configuration = new PoliticsXML(this.politicsPath);
-      this.metadataOutPathBase = this.basePath + this.configuration.getConfID();
+      this.metadataOutName = this.configuration.getConfID();
       this.metadataOutID = 0;
       this.counterMap = new HashMap<String, Integer>();
       this.packetsMap = new HashMap<String, List<String>>();
@@ -66,7 +69,7 @@ public class FilterBolt implements IRichBolt {
 
       if(tuple.getString(4) != null){
          this.metadataOutID++;
-         this.metadataOutPath = this.metadataOutPathBase + this.metadataOutID + ".xml";
+         this.metadataOutPath = this.metadataPath + "/" + this.metadataOutName + this.metadataOutID + ".xml";
          new CorrelationCreation(this.metadataOutPath, this.packetsMap, this.counterMap, null);
          this.collector.emit(new Values(this.metadataOutPath));
       }

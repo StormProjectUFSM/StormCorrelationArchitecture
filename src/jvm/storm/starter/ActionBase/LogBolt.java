@@ -20,24 +20,26 @@ import org.apache.storm.tuple.Tuple;
 
 public class LogBolt implements IRichBolt {
    private String logOutPath;
-   private String politicsPath;
+   private String basePath, politicsPath, politicsName;
    private PoliticsXML configuration;
    private OutputCollector collector;
 
-   public LogBolt(String politicsPath){
-      this.politicsPath = politicsPath;
+   public LogBolt(String basePath, String politicsName){
+      this.politicsPath = basePath + politicsName;
+      this.basePath = basePath;
+      this.politicsName = politicsName;
    }
 
    @Override
    public void prepare(Map conf, TopologyContext context, OutputCollector collector) {
-      this.configuration = new PoliticsXML(politicsPath);
+      this.configuration = new PoliticsXML(this.politicsPath);
       this.logOutPath = this.configuration.getAILogLocal();
       this.collector = collector;
    }
 
    @Override
    public void execute(Tuple tuple) {
-
+	System.out.println("\n\n\n\n\n\n\n\n\n\n\n " + tuple.getString(0) + "\n\n\n\n\n\n\n\n\n\n\n\n");
      try{
         CorrelationXML request = new CorrelationXML(tuple.getString(0));
         FileWriter finserter = new FileWriter(new File(this.logOutPath));
