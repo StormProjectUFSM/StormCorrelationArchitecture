@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class CorrelationXML{
 	private File XMLFile;
-    private Document XMLDocument;
+    	private Document XMLDocument;
 	private NodeList ElementsList;
 	private NodeList UnrecognizedList;
 	private Node ActualElement;

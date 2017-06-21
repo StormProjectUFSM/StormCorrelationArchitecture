@@ -18,6 +18,8 @@ import org.apache.storm.tuple.Tuple;
 public class SyslogBolt implements IRichBolt {
    private OutputCollector collector;
 
+   public SyslogBolt(String politicsPath){}
+
    @Override
    public void prepare(Map conf, TopologyContext context, OutputCollector collector) {
       this.collector = collector;

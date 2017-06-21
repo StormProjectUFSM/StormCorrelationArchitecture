@@ -26,10 +26,15 @@ public class PoliticsXML{
 		catch(SAXException e){}
 		catch(IOException e){}
 		catch (ParserConfigurationException e){}
-	}	
-	
+	}
+
 	public String getConfID(){
 		return XMLDocument.getElementsByTagName("confID").item(0).getTextContent();
+	}
+
+	public String getBITrigger(){
+		Node bInfo = XMLDocument.getElementsByTagName("basicInfo").item(0);
+		return ((Element) bInfo).getElementsByTagName("trigger").item(0).getTextContent();
 	}
 
 	public String getBICorrelation(){
