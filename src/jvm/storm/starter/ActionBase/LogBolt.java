@@ -17,6 +17,7 @@ import org.apache.storm.task.TopologyContext;
 import org.apache.storm.topology.IRichBolt;
 import org.apache.storm.topology.OutputFieldsDeclarer;
 import org.apache.storm.tuple.Tuple;
+import org.apache.commons.io.FileUtils;
 
 public class LogBolt implements IRichBolt {
    private String logOutPath;
@@ -39,7 +40,6 @@ public class LogBolt implements IRichBolt {
 
    @Override
    public void execute(Tuple tuple) {
-	System.out.println("\n\n\n\n\n\n\n\n\n\n\n " + tuple.getString(0) + "\n\n\n\n\n\n\n\n\n\n\n\n");
      try{
         CorrelationXML request = new CorrelationXML(tuple.getString(0));
         FileWriter finserter = new FileWriter(new File(this.logOutPath));
@@ -73,10 +73,13 @@ public class LogBolt implements IRichBolt {
 
    @Override
    public void cleanup() {
-//       String metaInit = this.configuration.getConfID();
-//       File dir = new File("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase");
-//       File[] filesList = dir.listFiles();
+	 try{
+	     File dir = new File(this.basePath + this.politicsName + "TMP");
+             FileUtils.deleteDirectory(dir);
+	 }
+	 catch(IOException ex){}
 
+//       File[] filesList = dir.listFiles();
 //       for (File file : filesList) {
 //          if ((file.isFile()) && (file.getName().startsWith(metaInit)) && (file.getName().endsWith(".xml"))){
 //             file.delete();
