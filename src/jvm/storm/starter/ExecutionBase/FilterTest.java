@@ -26,9 +26,9 @@ public class FilterTest{
 
 		TopologyBuilder builder = new TopologyBuilder();
         builder.setSpout("call-log-reader-spout", kafkaSpout);
-		builder.setBolt("call-log-PcapBolt-bolt", new PcapBolt("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase/FilterTest.xml")).shuffleGrouping("call-log-reader-spout");
+		builder.setBolt("call-log-correlationtype-bolt", new ProtocolSizeBolt("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase/FilterTest.xml")).shuffleGrouping("call-log-reader-spout");
 		builder.setBolt("call-log-trigger-bolt", new ChronoBolt("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase/FilterTest.xml"))
-        .fieldsGrouping("call-log-PcapBolt-bolt", new Fields("dstPort", "protocol", "size", "fullpacket"));
+        .fieldsGrouping("call-log-correlationtype-bolt", new Fields("dstPort", "protocol", "size", "fullpacket"));
 		builder.setBolt("call-log-correlation-bolt", new FilterBolt("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase/","FilterTest.xml")).fieldsGrouping("call-log-trigger-bolt", new Fields("dstPort", "protocol", "size", "fullpacket", "trigger"));
 		builder.setBolt("call-log-action-bolt", new LogBolt("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase/","FilterTest.xml")).fieldsGrouping("call-log-correlation-bolt", new Fields("request"));
 

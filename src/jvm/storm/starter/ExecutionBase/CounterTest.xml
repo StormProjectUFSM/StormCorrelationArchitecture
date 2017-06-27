@@ -4,11 +4,8 @@
 	<basicInfo>
 		<trigger>EventBolt</trigger>
 		<correlation>CounterBolt</correlation>
+                <correlationType>ProtocolSizeBolt</correlationType>
 		<action>LogBolt</action>
-		<flows>
-			<flow>PcapBolt</flow>
-			<flow>SyslogBolt</flow>
-		</flows>
 	</basicInfo>
 	<correlationInfo>
 		<checkList>
@@ -25,7 +22,7 @@
 		<eventsAmount>10</eventsAmount>
 	</correlationInfo>
 	<actionInfo>
-		<logLocal>/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase/Log.txt</logLocal>
+		<logLocal>/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/Log.txt</logLocal>
 		<email></email>
 	</actionInfo>
 </politicsConf>

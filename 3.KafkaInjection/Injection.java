@@ -15,34 +15,21 @@ public class Injection {
         ProducerConfig config = new ProducerConfig(props);
         Producer<String, String> producer = new Producer<String, String>(config);
 
-	String fullPacket, sysLine;
-        String[] packetData;
-        Float sleepTime;
+	String fullPacket;
+        Random sleepGap = new Random();
+
 	try {
-	    FileInputStream pcapStream = new FileInputStream("Data/DoS.csv");
+	    FileInputStream pcapStream = new FileInputStream("Data/Packets.csv");
             BufferedReader pcapReader = new BufferedReader(new InputStreamReader(pcapStream));
-            FileInputStream syslogStream = new FileInputStream("Data/Syslog.txt");
-            BufferedReader syslogReader = new BufferedReader(new InputStreamReader(syslogStream));
 	    while(true) {
 		fullPacket = pcapReader.readLine();
-		sysLine = syslogReader.readLine();
 		if (fullPacket == null){
             	    pcapStream.getChannel().position(0);
 	    	    fullPacket = pcapReader.readLine();
          	}
-                if (sysLine == null){
-                    syslogStream.getChannel().position(0);
-                    sysLine = syslogReader.readLine();
-                }
 
-		packetData = fullPacket.split(",");
-         	sleepTime = Float.parseFloat(packetData[0].replaceAll("\"", ""))*1000;
-        	Thread.sleep(sleepTime.intValue());
-                String message = packetData[1].replaceAll("\"", "") + "," + packetData[2].replaceAll("\"", "") + "," + packetData[3].replaceAll("\"", "") + "," + packetData[4].replaceAll("\"", "") + "," + packetData[5].replaceAll("\"", "") + "," + packetData[6].replaceAll("\"", "");
-                KeyedMessage<String, String> data = new KeyedMessage<String, String>("Network", "192.168.10.1", message);
-                producer.send(data);
-                Thread.sleep(10);
-                data = new KeyedMessage<String, String>("Network", "192.168.10.1", sysLine);
+        	Thread.sleep(sleepGap.nextInt(21));
+		KeyedMessage<String, String> data = new KeyedMessage<String, String>("Network", "192.168.10.1", fullPacket.replaceAll("\"", ""));
                 producer.send(data);
             }
         }

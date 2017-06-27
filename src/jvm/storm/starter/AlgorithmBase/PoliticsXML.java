@@ -42,20 +42,14 @@ public class PoliticsXML{
 		return ((Element) bInfo).getElementsByTagName("correlation").item(0).getTextContent();
 	}
 
+        public String getBICorrelationType(){
+                Node bInfo = XMLDocument.getElementsByTagName("basicInfo").item(0);
+                return ((Element) bInfo).getElementsByTagName("correlationType").item(0).getTextContent();
+        }
+
 	public String getBIAction(){
 		Node bInfo = XMLDocument.getElementsByTagName("basicInfo").item(0);
 		return ((Element) bInfo).getElementsByTagName("action").item(0).getTextContent();
-	}
-
-	public ArrayList<String> getBIFlowList(){
-		ArrayList<String> listOutput = new ArrayList<String>();
-		Node cInfo = XMLDocument.getElementsByTagName("basicInfo").item(0);
-		NodeList flowList = ((Element)cInfo).getElementsByTagName("flow");
-
-		for (int flow = 0; flow < flowList.getLength(); flow++){
-			listOutput.add(flowList.item(flow).getTextContent());
-		}
-		return listOutput;
 	}
 
 	public String getCIProtocol(){

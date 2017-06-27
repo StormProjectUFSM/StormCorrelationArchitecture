@@ -55,14 +55,6 @@ public class LogBolt implements IRichBolt {
            }
            finserter.write("\n");
         }
-	finserter.write("\n============= GENERAL LOG =============\n\n");
-        while (request.chargeNextUnrecognized()){
-            finserter.write("Data: " + request.getUnrecognizedData() + "\n");
-	    if (!request.getUnrecognizedCounter().equals("")){
-	        finserter.write("Counter: " + request.getUnrecognizedCounter() + "\n");
-	    }
-	    finserter.write("\n");
-	}
         finserter.close();
         request.close();
      }

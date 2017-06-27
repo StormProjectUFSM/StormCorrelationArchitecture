@@ -1,3 +1,4 @@
+/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/FilterBase/ProtocolSizeBolt.java
 /home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/CorrelationBase/CounterBolt.java
 /home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/org/apache/storm/starter/tools/RankableObjectWithFields.java
 /home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/AlgorithmBase/CorrelationXML.java
@@ -15,7 +16,6 @@
 /home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/org/apache/storm/starter/spout/RandomSentenceSpout.java
 /home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/org/apache/storm/starter/FastWordCountTopology.java
 /home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/org/apache/storm/starter/SlidingTupleTsTopology.java
-/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/FlowBase/PcapBolt.java
 /home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/org/apache/storm/starter/trident/TridentKafkaWordCount.java
 /home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/org/apache/storm/starter/trident/TridentReach.java
 /home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/TriggerBase/EventBolt.java
@@ -26,6 +26,7 @@
 /home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/org/apache/storm/starter/trident/TridentMapExample.java
 /home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/org/apache/storm/starter/WordCountTopologyNode.java
 /home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/org/apache/storm/starter/SlidingWindowTopology.java
+/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase/CompressionTest.java
 /home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/org/apache/storm/starter/tools/Rankings.java
 /home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/org/apache/storm/starter/SingleJoinExample.java
 /home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/TriggerBase/ChronoBolt.java
@@ -33,7 +34,6 @@
 /home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/AlgorithmBase/PoliticsXML.java
 /home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ActionBase/LogBolt.java
 /home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/org/apache/storm/starter/BlobStoreAPIWordCountTopology.java
-/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/FlowBase/SyslogBolt.java
 /home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/org/apache/storm/starter/SkewedRollingTopWords.java
 /home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/org/apache/storm/starter/trident/TridentWordCount.java
 /home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/org/apache/storm/starter/bolt/TotalRankingsBolt.java
@@ -54,4 +54,3 @@
 /home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/CorrelationBase/FilterBolt.java
 /home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/org/apache/storm/starter/trident/TridentMinMaxOfDevicesTopology.java
 /home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/org/apache/storm/starter/TransactionalGlobalCount.java
-/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase/CounterTest.java

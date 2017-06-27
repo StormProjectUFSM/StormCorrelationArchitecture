@@ -4,10 +4,8 @@
 	<basicInfo>
 		<trigger>ChronoBolt</trigger>
 		<correlation>FilterBolt</correlation>
+                <correlationType>ProtocolSizeBolt</correlationType>
 		<action>LogBolt</action>
-		<flows>
-			<flow>PcapBolt</flow>
-		</flows>
 	</basicInfo>
 	<correlationInfo>
 		<checkList>
@@ -20,11 +18,11 @@
 			<port>54476</port>
 			<port>9249</port>
 		</portList>
-		<timeMSAmount>4000</timeMSAmount>
+		<timeMSAmount>1000</timeMSAmount>
 		<eventsAmount></eventsAmount>
 	</correlationInfo>
 	<actionInfo>
-		<logLocal>/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase/Log.txt</logLocal>
+		<logLocal>/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/Log.txt</logLocal>
 		<email></email>
 	</actionInfo>
 </politicsConf>

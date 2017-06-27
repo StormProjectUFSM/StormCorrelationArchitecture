@@ -29,17 +29,10 @@ public class PoliticsConfigure{
 			this.stormTopology.write("		SpoutConfig spoutConfig = new SpoutConfig(hosts, \"Network\", \"/Network\", \"" + this.politics.getConfID() + "Network\");\n");
 			this.stormTopology.write("		spoutConfig.scheme = new SchemeAsMultiScheme(new StringScheme());\n        KafkaSpout kafkaSpout = new KafkaSpout(spoutConfig);\n\n" + 
 								"		TopologyBuilder builder = new TopologyBuilder();\n        builder.setSpout(\"call-log-reader-spout\", kafkaSpout);\n");
-
-			ArrayList<String> flowBolts = this.politics.getBIFlowList();
-			for (String flow : flowBolts){
-				this.stormTopology.write("		builder.setBolt(\"call-log-" + flow +"-bolt\", new " + flow + "(\"" + basePath + politicsFile + "\")).shuffleGrouping(\"call-log-reader-spout\");\n");
-			}
+			this.stormTopology.write("		builder.setBolt(\"call-log-correlationtype-bolt\", new " + this.politics.getBICorrelationType() + "(\"" + basePath + politicsFile + "\")).shuffleGrouping(\"call-log-reader-spout\");\n");
 
 			this.stormTopology.write("		builder.setBolt(\"call-log-trigger-bolt\", new " + this.politics.getBITrigger() + "(\"" + basePath + politicsFile + "\"))");
-			for (String flow : flowBolts){
-				this.stormTopology.write("\n        .fieldsGrouping(\"call-log-" + flow + "-bolt\", new Fields(\"dstPort\", \"protocol\", \"size\", \"fullpacket\"))");
-			}
-			this.stormTopology.write(";\n");
+			this.stormTopology.write("\n        .fieldsGrouping(\"call-log-correlationtype-bolt\", new Fields(\"dstPort\", \"protocol\", \"size\", \"fullpacket\"));\n");
 
 			this.stormTopology.write("		builder.setBolt(\"call-log-correlation-bolt\", new " + this.politics.getBICorrelation() + "(\"" + basePath + "\",\"" + politicsFile + "\")).fieldsGrouping(\"call-log-trigger-bolt\", new Fields(\"dstPort\", \"protocol\", \"size\", \"fullpacket\", \"trigger\"));\n");
 			this.stormTopology.write("		builder.setBolt(\"call-log-action-bolt\", new " + this.politics.getBIAction() + "(\"" + basePath + "\",\"" + politicsFile + "\")).fieldsGrouping(\"call-log-correlation-bolt\", new Fields(\"request\"));\n");
