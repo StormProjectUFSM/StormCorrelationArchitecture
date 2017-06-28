@@ -51,7 +51,7 @@ public class CounterBolt implements IRichBolt {
    public void execute(Tuple tuple) {
       String call = tuple.getString(0);
 
-      if (!call.equals("")){
+      if (call != null){
           if(!counterMap.containsKey(call)){
              counterMap.put(call, 1);
              packetsMap.put(call, new ArrayList<String>());

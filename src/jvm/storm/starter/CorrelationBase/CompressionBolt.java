@@ -50,7 +50,7 @@ public class CompressionBolt implements IRichBolt {
    public void execute(Tuple tuple) {
       String call = tuple.getString(0);
 
-      if (!call.equals("")){
+      if (call != null){
           if(!compressMap.contains(call)){
              compressMap.add(call);
              compressPackets.add(new ArrayList<String>());

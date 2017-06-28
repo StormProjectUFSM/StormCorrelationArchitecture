@@ -41,10 +41,10 @@ public class ProtocolSizeBolt implements IRichBolt {
    public void execute(Tuple tuple) {
       String[] fullPacket = tuple.getString(0).split(",");
 
-      String rProtocol = fullPacket[2];
-      long rPacketSize = Long.parseLong(fullPacket[3]);
+      String rProtocol = fullPacket[3];
+      long rPacketSize = Long.parseLong(fullPacket[4]);
       if ((rProtocol.equals(this.packetProtocol)) && (rPacketSize >= this.minPacketSize) && (rPacketSize <= this.maxPacketSize)){
-         this.collector.emit(new Values(fullPacket[1], fullPacket[2], fullPacket[3], tuple.getString(0)));
+         this.collector.emit(new Values(fullPacket[2], fullPacket[3], fullPacket[4], tuple.getString(0)));
       }
 
       collector.ack(tuple);
