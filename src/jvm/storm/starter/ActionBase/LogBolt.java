@@ -24,11 +24,13 @@ public class LogBolt implements IRichBolt {
    private String basePath, politicsPath, politicsName;
    private PoliticsXML configuration;
    private OutputCollector collector;
+   private Integer logNumber;
 
    public LogBolt(String basePath, String politicsName){
       this.politicsPath = basePath + politicsName;
       this.basePath = basePath;
       this.politicsName = politicsName;
+      this.logNumber = 1;
    }
 
    @Override
@@ -42,7 +44,8 @@ public class LogBolt implements IRichBolt {
    public void execute(Tuple tuple) {
      try{
         CorrelationXML request = new CorrelationXML(tuple.getString(0));
-        FileWriter finserter = new FileWriter(new File(this.logOutPath));
+        FileWriter finserter = new FileWriter(new File(this.logOutPath + this.logNumber.toString() + ".txt"));
+        this.logNumber++;
         finserter.write("============= POLITICS LOG =============\n\n");
 	while (request.chargeNextElement()){
            finserter.write("Port: " + request.getElementPort() + "\n");
