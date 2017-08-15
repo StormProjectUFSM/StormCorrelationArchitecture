@@ -1,0 +1,26 @@
+<politicsConf>
+	<confID>ConfTeste</confID>
+	<basicInfo>
+	    <trigger>xxx</trigger>
+		<correlation>Filter</correlation>
+	    <correlationType>xxx</correlationType>
+	    <action>Log</action>
+	</basicInfo>
+    <correlationInfo>  
+		<checkList>
+	        <ipAdress>
+				<source>10.0.10.88</source>
+				<destination>200.132.35.220</destination>
+			</ipAdress>
+			<protocol>TCP</protocol>
+			<service>HTTP</service>
+			<port>80</port>
+			<timeMSAmount>7000</timeMSAmount>
+			<eventsAmount>5</eventsAmount>
+	    </checkList>
+	</correlationInfo>
+	<actionInfo>
+	    <logLocal>/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/Log.txt</logLocal>
+	    <email>storm@storm.com.br</email>
+	</actionInfo>
+</politicsConf>

@@ -42,43 +42,44 @@ public class PoliticsXML{
 		return ((Element) bInfo).getElementsByTagName("correlation").item(0).getTextContent();
 	}
 
-        public String getBICorrelationType(){
-                Node bInfo = XMLDocument.getElementsByTagName("basicInfo").item(0);
-                return ((Element) bInfo).getElementsByTagName("correlationType").item(0).getTextContent();
-        }
+    public String getBICorrelationType(){
+        Node bInfo = XMLDocument.getElementsByTagName("basicInfo").item(0);
+        return ((Element) bInfo).getElementsByTagName("correlationType").item(0).getTextContent();
+    }
 
 	public String getBIAction(){
 		Node bInfo = XMLDocument.getElementsByTagName("basicInfo").item(0);
 		return ((Element) bInfo).getElementsByTagName("action").item(0).getTextContent();
 	}
 
+	public String getCIIPAdressSource(){
+		Node cInfo = XMLDocument.getElementsByTagName("correlationInfo").item(0);
+		NodeList ipSource = ((Element)((Element)cInfo).getElementsByTagName("checkList").item(0)).getElementsByTagName("ipAdress");
+		return ((Element)ipSource.item(0)).getElementsByTagName("source").item(0).getTextContent();
+	}
+
+	public String getCIIPAdressDestination(){
+		Node cInfo = XMLDocument.getElementsByTagName("correlationInfo").item(0);
+		NodeList ipDestination = ((Element)((Element)cInfo).getElementsByTagName("checkList").item(0)).getElementsByTagName("ipAdress");
+		return ((Element)ipDestination.item(0)).getElementsByTagName("destination").item(0).getTextContent();
+	}
+
 	public String getCIProtocol(){
 		Node cInfo = XMLDocument.getElementsByTagName("correlationInfo").item(0);
-		NodeList ipList = ((Element)cInfo).getElementsByTagName("checkList");
-		return ((Element)ipList.item(0)).getElementsByTagName("protocol").item(0).getTextContent();
+		NodeList protocol = ((Element)cInfo).getElementsByTagName("checkList");
+		return ((Element)protocol.item(0)).getElementsByTagName("protocol").item(0).getTextContent();
 	}
 
-	public Long getCIMinPacketSize(){
+	public String getCIService(){
 		Node cInfo = XMLDocument.getElementsByTagName("correlationInfo").item(0);
-		NodeList ipList = ((Element)cInfo).getElementsByTagName("checkList");
-		return Long.parseLong(((Element)ipList.item(0)).getElementsByTagName("minPacketSize").item(0).getTextContent());
+		NodeList service = ((Element)cInfo).getElementsByTagName("checkList");
+		return ((Element)service.item(0)).getElementsByTagName("service").item(0).getTextContent();
 	}
 
-	public Long getCIMaxPacketSize(){
+	public String getCIPort(){
 		Node cInfo = XMLDocument.getElementsByTagName("correlationInfo").item(0);
-		NodeList ipList = ((Element)cInfo).getElementsByTagName("checkList");
-		return Long.parseLong(((Element)ipList.item(0)).getElementsByTagName("maxPacketSize").item(0).getTextContent());
-	}
-
-	public ArrayList<String> getCIPortList(){
-		ArrayList<String> listOutput = new ArrayList<String>();
-		Node cInfo = XMLDocument.getElementsByTagName("correlationInfo").item(0);
-		NodeList ipList = ((Element)cInfo).getElementsByTagName("port");
-
-		for (int port = 0; port < ipList.getLength(); port++){
-			listOutput.add(ipList.item(port).getTextContent());
-		}
-		return listOutput;
+		NodeList port = ((Element)cInfo).getElementsByTagName("checkList");
+		return ((Element)port.item(0)).getElementsByTagName("port").item(0).getTextContent();
 	}
 
 	public Long getCITimeMSAmount(){
@@ -99,5 +100,17 @@ public class PoliticsXML{
 	public String getAIEmail(){
 		Node aInfo = XMLDocument.getElementsByTagName("actionInfo").item(0);
 		return ((Element) aInfo).getElementsByTagName("email").item(0).getTextContent();
+	}
+
+	public String getGenericFromRoot(String path){
+		String[] pathElements = path.split("\\.");
+		Integer index;
+		Node trunk;
+
+		trunk = XMLDocument.getElementsByTagName(pathElements[0]).item(0);
+		for(index = 1; index < pathElements.length-1; index++){
+			trunk = ((Element) trunk).getElementsByTagName(pathElements[index]).item(0);
+		}
+		return ((Element) trunk).getElementsByTagName(pathElements[index]).item(0).getTextContent();
 	}
 }
