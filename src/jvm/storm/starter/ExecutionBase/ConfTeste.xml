@@ -1,10 +1,10 @@
 <politicsConf>
 	<confID>ConfTeste</confID>
 	<basicInfo>
-	    <trigger>EventBolt</trigger>
-		<correlation>Filter</correlation>
-	    <correlationType>xxx</correlationType>
-	    <action>Log</action>
+	    <trigger>ChronoBolt</trigger>
+		<correlation>FilterBolt</correlation>
+	    <correlationType>ProtocolServiceBolt</correlationType>
+	    <action>LogBolt</action>
 	</basicInfo>
     <correlationInfo>  
 		<checkList>
@@ -20,7 +20,7 @@
 	    </checkList>
 	</correlationInfo>
 	<actionInfo>
-	    <logLocal>/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/MetadataBase/Log.txt</logLocal>
+	    <logLocal>/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/Log.txt</logLocal>
 	    <email>storm@storm.com.br</email>
 	</actionInfo>
 </politicsConf>

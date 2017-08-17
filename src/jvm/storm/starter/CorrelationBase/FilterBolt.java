@@ -47,10 +47,8 @@ public class FilterBolt implements IRichBolt {
       this.packetsMap = new HashMap<String, List<String>>();
       this.collector = collector;
 
-      for(String Port : this.configuration.getCIPortList()){
-         this.counterMap.put(Port, 0);
-	 this.packetsMap.put(Port, new ArrayList<String>());
-      }
+      this.counterMap.put(this.configuration.getCIPort(), 0);
+      this.packetsMap.put(this.configuration.getCIPort(), new ArrayList<String>());
    }
 
    @Override
