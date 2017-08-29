@@ -41,6 +41,7 @@ org/apache/storm/starter/TransactionalGlobalCount$1$2.class
 org/apache/storm/starter/trident/TridentWindowingInmemoryStoreTopology.class
 org/apache/storm/starter/tools/Rankable.class
 org/apache/storm/starter/BasicDRPCTopology.class
+storm/starter/CorrelationBase/AckBolt.class
 org/apache/storm/starter/bolt/RollingCountBolt.class
 org/apache/storm/starter/ManualDRPC$ExclamationBolt.class
 org/apache/storm/starter/bolt/IntermediateRankingsBolt.class

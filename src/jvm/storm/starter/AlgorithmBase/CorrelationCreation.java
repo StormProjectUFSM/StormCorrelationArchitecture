@@ -10,12 +10,29 @@ import java.io.IOException;
 
 public class CorrelationCreation {
 
-	public CorrelationCreation (String metadataOutPath, List<List<String>> packetsMap, List<String> compressMap, 
+	public CorrelationCreation (String metadataOutPath, Map<String, String> ackMap){
+                try{
+                FileWriter finserter = new FileWriter(new File(metadataOutPath));
+                finserter.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<correlationResult>\n    <elementList>");
+
+                for(Map.Entry<String, String> entry:ackMap.entrySet()){
+                	finserter.write("\n    <element>\n          <port>" + entry.getKey() + "</port>\n           <counter></counter>\n           <packets>\n");
+                        finserter.write("                <packet>" + entry.getValue() + "</packet>\n");
+                        finserter.write("           </packets>\n</element>");
+                }
+
+                finserter.write("\n    </elementList>\n    <unrecognizedList>");
+		finserter.write("\n    </unrecognizedList>\n</correlationResult>");
+		finserter.close();
+		}
+		catch(IOException ex){}
+	}
+
+	public CorrelationCreation (String metadataOutPath, List<List<String>> packetsMap, List<String> compressMap,
 								List<String> generalMap){
 		try{
         	FileWriter finserter = new FileWriter(new File(metadataOutPath));
         	finserter.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<correlationResult>\n    <elementList>");
-        
         	for(String Port : compressMap){
             	finserter.write("\n    <element>\n          <port>" + Port + "</port>\n           <counter></counter>\n           <packets>\n");
 	    		for(String packet : packetsMap.get(compressMap.indexOf(Port))){
@@ -60,9 +77,5 @@ public class CorrelationCreation {
         	finserter.close();
      	}
      	catch(IOException ex){}
-    }
-
-    public static void main(String [ ] args){
-    	System.out.println("oi");
     }
 }
