@@ -51,9 +51,11 @@ public class AckBolt implements IRichBolt {
           String call = tuple.getString(3);
           String[] packet = call.split(",");
 
-          if(!this.ackMap.containsKey(packet[7])){
-             this.ackMap.remove(packet[7]);
-          }
+	  if(packet.length == 8){
+            if(!this.ackMap.containsKey(packet[7])){
+              this.ackMap.remove(packet[7]);
+            }
+	  }
 	  this.ackMap.put(packet[6], call);
 
       }

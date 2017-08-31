@@ -12,7 +12,7 @@ storm/starter/CorrelationBase/CompressionBolt.class
 org/apache/storm/starter/bolt/SingleJoinBolt$ExpireCallback.class
 org/apache/storm/starter/WordCountTopologyNode$RandomSentence.class
 org/apache/storm/starter/ReachTopology$1.class
-storm/starter/ExecutionBase/ConfTeste.class
+storm/starter/ExecutionBase/AckTest.class
 org/apache/storm/starter/SlidingWindowTopology$1.class
 org/apache/storm/starter/spout/RandomIntegerSpout.class
 org/apache/storm/starter/trident/TridentWindowingInmemoryStoreTopology$1.class
@@ -107,6 +107,7 @@ org/apache/storm/starter/TransactionalGlobalCount$1.class
 org/apache/storm/starter/BlobStoreAPIWordCountTopology.class
 org/apache/storm/starter/FastWordCountTopology$FastRandomSentenceSpout.class
 org/apache/storm/starter/ReachTopology$CountAggregator.class
+storm/starter/ExecutionBase/FilterTest.class
 org/apache/storm/starter/TransactionalWords$KeyedCountUpdater.class
 org/apache/storm/starter/trident/TridentReach.class
 org/apache/storm/starter/tools/SlotBasedCounter.class
