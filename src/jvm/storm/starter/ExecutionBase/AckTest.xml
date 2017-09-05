@@ -2,7 +2,7 @@
 	<confID>AckTest</confID>
 	<basicInfo>
 	    <trigger>ChronoBolt</trigger>
-		<correlation>AckBolt</correlation>
+		<correlation>AckLogBolt</correlation>
 	    <correlationType>ProtocolServiceBolt</correlationType>
 	    <action>LogBolt</action>
 	</basicInfo>

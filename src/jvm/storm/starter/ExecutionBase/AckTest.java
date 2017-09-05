@@ -30,7 +30,7 @@ public class AckTest{
 		builder.setBolt("call-log-trigger-bolt", new ChronoBolt("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase/AckTest.xml"))
         .fieldsGrouping("call-log-correlationtype-bolt", new Fields("dstPort", "protocol", "size", "fullpacket"));
 		builder.setBolt("call-log-correlation-bolt", new AckBolt("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase/","AckTest.xml")).fieldsGrouping("call-log-trigger-bolt", new Fields("dstPort", "protocol", "size", "fullpacket", "trigger"));
-		builder.setBolt("call-log-action-bolt", new LogBolt("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase/","AckTest.xml")).fieldsGrouping("call-log-correlation-bolt", new Fields("request"));
+		builder.setBolt("call-log-action-bolt", new AckLogBolt("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase/","AckTest.xml")).fieldsGrouping("call-log-correlation-bolt", new Fields("request"));
 
         LocalCluster cluster = new LocalCluster();
 		cluster.submitTopology("AckTest", config, builder.createTopology());
