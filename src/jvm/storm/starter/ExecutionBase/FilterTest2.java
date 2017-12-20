@@ -16,30 +16,32 @@ import storm.starter.TriggerBase.*;
 
 public class FilterTest2{
 	public static void main(String[] args) throws Exception{
-    	Config config = new Config();
+		Config config = new Config();
 		config.setDebug(true);
 
     	BrokerHosts hosts = new ZkHosts("localhost:2181");
-		SpoutConfig spoutConfig = new SpoutConfig(hosts, "Network", "/Network", "FilterTestNetwork");
+		SpoutConfig spoutConfig = new SpoutConfig(hosts, "Network", "/Network", "FilterTest2Network");
 		spoutConfig.scheme = new SchemeAsMultiScheme(new StringScheme());
-        KafkaSpout kafkaSpout = new KafkaSpout(spoutConfig);
+		KafkaSpout kafkaSpout = new KafkaSpout(spoutConfig);
 
 		TopologyBuilder builder = new TopologyBuilder();
-        	builder.setSpout("call-log-reader-spout", kafkaSpout);
-		builder.setBolt("call-log-trigger-bolt", new EventBolt("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase/FilterTest.xml")).shuffleGrouping("call-log-reader-spout");
-		builder.setBolt("call-log-correlationtype-bolt", new ProtocolServiceBolt("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase/FilterTest.xml"))
+		builder.setSpout("call-log-reader-spout", kafkaSpout);
+		builder.setBolt("call-log-trigger-bolt", new EventBolt("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase/FilterTest2.xml"))
+		.shuffleGrouping("call-log-reader-spout");
+		builder.setBolt("call-log-correlationtype-bolt", new ProtocolServiceBolt("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase/FilterTest2.xml"))
 		.fieldsGrouping("call-log-trigger-bolt", new Fields("fullpacket", "trigger"));
-		builder.setBolt("call-log-correlation-bolt", new FilterBolt("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase/","FilterTest.xml"))
+		builder.setBolt("call-log-correlation-bolt", new FilterBolt("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase/","FilterTest2.xml"))
 		.fieldsGrouping("call-log-correlationtype-bolt", new Fields("dstPort", "protocol", "size", "fullpacket", "trigger"));
-		builder.setBolt("call-log-action-bolt", new LogBolt("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase/","FilterTest.xml"))
+		builder.setBolt("call-log-action-bolt", new LogBolt("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase/","FilterTest2.xml"))
 		.fieldsGrouping("call-log-correlation-bolt", new Fields("request"));
 
-        LocalCluster cluster = new LocalCluster();
-		cluster.submitTopology("FilterTest", config, builder.createTopology());
+		LocalCluster cluster = new LocalCluster();
+		cluster.submitTopology("FilterTest2", config, builder.createTopology());
 
-        Thread.sleep(10000);
-        KillOptions killOpts = new KillOptions();
-        killOpts.set_wait_secs(1);		cluster.killTopologyWithOpts("FilterTest", killOpts);
+		Thread.sleep(10000);
+		KillOptions killOpts = new KillOptions();
+		killOpts.set_wait_secs(1);
+		cluster.killTopologyWithOpts("FilterTest2", killOpts);
 		cluster.shutdown();
-    }
+	}
 }

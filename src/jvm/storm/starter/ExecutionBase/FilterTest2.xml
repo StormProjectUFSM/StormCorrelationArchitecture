@@ -1,8 +1,8 @@
 <politicsConf>
-	<confID>FilterTest</confID>
+	<confID>FilterTest2</confID>
 	<basicInfo>
-	    <trigger>ChronoBolt</trigger>
-		<correlation>EventBolt</correlation>
+	    <trigger>EventBolt</trigger>
+		<correlation>FilterBolt</correlation>
 	    <correlationType>ProtocolServiceBolt</correlationType>
 	    <action>LogBolt</action>
 	</basicInfo>
@@ -16,7 +16,7 @@
 			<service>OTHER</service>
 			<port>443</port>
 			<timeMSAmount>2000</timeMSAmount>
-			<eventsAmount>1000</eventsAmount>
+			<eventsAmount>5</eventsAmount>
 	    </checkList>
 	</correlationInfo>
 	<actionInfo>
