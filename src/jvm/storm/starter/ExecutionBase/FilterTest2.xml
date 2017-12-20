@@ -1,0 +1,26 @@
+<politicsConf>
+	<confID>FilterTest</confID>
+	<basicInfo>
+	    <trigger>ChronoBolt</trigger>
+		<correlation>EventBolt</correlation>
+	    <correlationType>ProtocolServiceBolt</correlationType>
+	    <action>LogBolt</action>
+	</basicInfo>
+    <correlationInfo>  
+		<checkList>
+	        <ipAdress>
+				<source>10.0.10.88</source>
+				<destination>172.217.29.195</destination>
+			</ipAdress>
+			<protocol>TLSv1.2</protocol>
+			<service>OTHER</service>
+			<port>443</port>
+			<timeMSAmount>2000</timeMSAmount>
+			<eventsAmount>1000</eventsAmount>
+	    </checkList>
+	</correlationInfo>
+	<actionInfo>
+	    <logLocal>/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/Log</logLocal>
+	    <email>storm@storm.com.br</email>
+	</actionInfo>
+</politicsConf>

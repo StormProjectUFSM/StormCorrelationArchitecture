@@ -37,11 +37,11 @@ public class EventBolt implements IRichBolt {
 
       this.eventsAmount++;
       if(this.eventsAmount == this.emissionFrequency){
-         this.collector.emit(new Values(tuple.getString(0), tuple.getString(1), tuple.getString(2), tuple.getString(3), ""));
+         this.collector.emit(new Values(tuple.getString(0), ""));
          this.eventsAmount = 0;
       }
       else{
-          this.collector.emit(new Values(tuple.getString(0), tuple.getString(1), tuple.getString(2), tuple.getString(3), null));
+          this.collector.emit(new Values(tuple.getString(0), null));
       }
 
       collector.ack(tuple);
@@ -52,7 +52,7 @@ public class EventBolt implements IRichBolt {
 
    @Override
    public void declareOutputFields(OutputFieldsDeclarer declarer) {
-      declarer.declare(new Fields("dstPort", "protocol", "size", "fullpacket", "trigger"));
+      declarer.declare(new Fields("fullpacket", "trigger"));
    }
 
    @Override

@@ -10,17 +10,17 @@
 		<checkList>
 	        <ipAdress>
 				<source>10.0.10.88</source>
-				<destination>200.132.35.220</destination>
+				<destination>172.217.29.195</destination>
 			</ipAdress>
-			<protocol>TCP</protocol>
-			<service>HTTP</service>
-			<port>80</port>
-			<timeMSAmount>7000</timeMSAmount>
+			<protocol>TLSv1.2</protocol>
+			<service>OTHER</service>
+			<port>443</port>
+			<timeMSAmount>2000</timeMSAmount>
 			<eventsAmount>5</eventsAmount>
 	    </checkList>
 	</correlationInfo>
 	<actionInfo>
-	    <logLocal>/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/Log.txt</logLocal>
+	    <logLocal>/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/Log</logLocal>
 	    <email>storm@storm.com.br</email>
 	</actionInfo>
 </politicsConf>

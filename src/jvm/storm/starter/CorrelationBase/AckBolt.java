@@ -55,9 +55,8 @@ public class AckBolt implements IRichBolt {
             if(!this.ackMap.containsKey(packet[7])){
               this.ackMap.remove(packet[7]);
             }
+	    this.ackMap.put(packet[6], call);
 	  }
-	  this.ackMap.put(packet[6], call);
-
       }
 
       if(tuple.getString(4) != null){

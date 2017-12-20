@@ -20,17 +20,20 @@ public class AckTest{
 		config.setDebug(true);
 
     	BrokerHosts hosts = new ZkHosts("localhost:2181");
-		SpoutConfig spoutConfig = new SpoutConfig(hosts, "Network", "/Network", "AckTestNetwork");
-		spoutConfig.scheme = new SchemeAsMultiScheme(new StringScheme());
+	SpoutConfig spoutConfig = new SpoutConfig(hosts, "Network", "/Network", "AckTestNetwork");
+	spoutConfig.scheme = new SchemeAsMultiScheme(new StringScheme());
         KafkaSpout kafkaSpout = new KafkaSpout(spoutConfig);
 
-		TopologyBuilder builder = new TopologyBuilder();
+	TopologyBuilder builder = new TopologyBuilder();
         builder.setSpout("call-log-reader-spout", kafkaSpout);
-		builder.setBolt("call-log-correlationtype-bolt", new ProtocolServiceBolt("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase/AckTest.xml")).shuffleGrouping("call-log-reader-spout");
-		builder.setBolt("call-log-trigger-bolt", new ChronoBolt("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase/AckTest.xml"))
-        .fieldsGrouping("call-log-correlationtype-bolt", new Fields("dstPort", "protocol", "size", "fullpacket"));
-		builder.setBolt("call-log-correlation-bolt", new AckBolt("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase/","AckTest.xml")).fieldsGrouping("call-log-trigger-bolt", new Fields("dstPort", "protocol", "size", "fullpacket", "trigger"));
-		builder.setBolt("call-log-action-bolt", new AckLogBolt("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase/","AckTest.xml")).fieldsGrouping("call-log-correlation-bolt", new Fields("request"));
+	builder.setBolt("call-log-trigger-bolt", new ChronoBolt("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase/AckTest.xml"))
+	.shuffleGrouping("call-log-reader-spout");
+	builder.setBolt("call-log-correlationtype-bolt", new ProtocolServiceBolt("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase/AckTest.xml"))
+        .fieldsGrouping("call-log-trigger-bolt", new Fields("fullpacket", "trigger"));
+	builder.setBolt("call-log-correlation-bolt", new AckBolt("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase/","AckTest.xml"))
+	.fieldsGrouping("call-log-correlationtype-bolt", new Fields("dstPort", "protocol", "size", "fullpacket", "trigger"));
+	builder.setBolt("call-log-action-bolt", new AckLogBolt("/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/ExecutionBase/","AckTest.xml"))
+	.fieldsGrouping("call-log-correlation-bolt", new Fields("request"));
 
         LocalCluster cluster = new LocalCluster();
 		cluster.submitTopology("AckTest", config, builder.createTopology());

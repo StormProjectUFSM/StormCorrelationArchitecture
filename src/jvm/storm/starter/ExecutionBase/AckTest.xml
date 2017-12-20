@@ -20,7 +20,7 @@
 	    </checkList>
 	</correlationInfo>
 	<actionInfo>
-	    <logLocal>/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/Log.txt</logLocal>
+	    <logLocal>/home/storm/StormInfrastructure/Storm/apache-storm-1.0.3/examples/storm-starter/src/jvm/storm/starter/Log</logLocal>
 	    <email>storm@storm.com.br</email>
 	</actionInfo>
 </politicsConf>

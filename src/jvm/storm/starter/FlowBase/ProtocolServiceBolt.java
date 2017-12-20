@@ -40,13 +40,29 @@ public class ProtocolServiceBolt implements IRichBolt {
    public void execute(Tuple tuple) {
       String[] fullPacket = tuple.getString(0).split(",");
 
-      String rProtocol = fullPacket[3];
-      String rDstPort = fullPacket[2];
-      long rPacketSize = Long.parseLong(fullPacket[4]);
-      if ((rProtocol.equals(this.packetProtocol)) && (rDstPort.equals(this.packetPort))){
-         this.collector.emit(new Values(fullPacket[2], fullPacket[3], fullPacket[4], tuple.getString(0)));
+      String rProtocol="", rDstPort="";
+      long rPacketSize;
+      if (fullPacket.length == 8){
+      	//PCAP -> SrcIP,DstIP,DstPort,Protocol,Bytes,Payload,Frame,Ack
+	rProtocol = fullPacket[3];
+      	rDstPort = fullPacket[2];
+      	rPacketSize = Long.parseLong(fullPacket[4]);
+      }
+      if (fullPacket.length == 10){
+	//NETFLOW -> SrcIP,DstIP,SrcPort,DstPort,Protocol,TOS,InIface,FlowInfo,PacketNr,Bytes
+	rProtocol = fullPacket[4];
+        rDstPort = fullPacket[3];
+        rPacketSize = Long.parseLong(fullPacket[9]);
       }
 
+      if ((rProtocol.equals(this.packetProtocol)) && (rDstPort.equals(this.packetPort))){
+         this.collector.emit(new Values(fullPacket[2], fullPacket[3], fullPacket[4], tuple.getString(0), tuple.getString(1)));
+      }
+      else{
+	 if(tuple.getString(1) != null){
+	 	this.collector.emit(new Values("", "", "", "", tuple.getString(1)));
+	 }
+      }
       collector.ack(tuple);
    }
 
@@ -55,7 +71,7 @@ public class ProtocolServiceBolt implements IRichBolt {
 
    @Override
    public void declareOutputFields(OutputFieldsDeclarer declarer) {
-      declarer.declare(new Fields("dstPort", "protocol", "size", "fullpacket"));
+      declarer.declare(new Fields("dstPort", "protocol", "size", "fullpacket", "trigger"));
    }
 
    @Override

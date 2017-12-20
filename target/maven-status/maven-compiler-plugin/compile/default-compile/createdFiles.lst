@@ -84,6 +84,7 @@ org/apache/storm/starter/ThroughputVsLatency$WordCount.class
 org/apache/storm/starter/TransactionalWords$1$2.class
 org/apache/storm/starter/WordCountTopology$WordCount.class
 org/apache/storm/starter/TransactionalWords$BucketValue.class
+storm/starter/ExecutionBase/FilterTest2.class
 org/apache/storm/starter/trident/TridentMinMaxOfVehiclesTopology$SpeedComparator.class
 org/apache/storm/starter/trident/TridentReach$ExpandList.class
 org/apache/storm/starter/BlobStoreAPIWordCountTopology$SplitSentence.class
