@@ -18,6 +18,7 @@ org/apache/storm/starter/spout/RandomIntegerSpout.class
 org/apache/storm/starter/trident/TridentWindowingInmemoryStoreTopology$1.class
 org/apache/storm/starter/BlobStoreAPIWordCountTopology$FilterWords.class
 org/apache/storm/starter/TransactionalGlobalCount$1$1.class
+storm/starter/AlgorithmBase/AuditElement.class
 org/apache/storm/starter/TransactionalGlobalCount$UpdateGlobalCount.class
 storm/starter/TriggerBase/ChronoBolt.class
 org/apache/storm/starter/FastWordCountTopology$WordCount.class
@@ -102,6 +103,7 @@ org/apache/storm/starter/trident/TridentReach$2.class
 org/apache/storm/starter/InOrderDeliveryTest.class
 org/apache/storm/starter/ExclamationTopology.class
 org/apache/storm/starter/spout/RandomNumberGeneratorSpout.class
+storm/starter/ActionBase/AuditLogBolt.class
 org/apache/storm/starter/ThroughputVsLatency$FastRandomSentenceSpout.class
 org/apache/storm/starter/MultipleLoggerTopology.class
 org/apache/storm/starter/TransactionalWords$BucketCountUpdater.class
