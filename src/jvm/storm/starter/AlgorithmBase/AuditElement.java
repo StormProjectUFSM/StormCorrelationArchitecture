@@ -5,10 +5,10 @@ public class AuditElement {
    private String MAC;
    private String Vendor;
 
-   public AuditElement(String IP){
+   public AuditElement(String IP, String MAC, String Vendor){
       this.IP = IP;
-      this.MAC = "00:25:96:FF:FE:12:34:56";
-      this.Vendor = "GIGAVISION srl";
+      this.MAC = MAC;
+      this.Vendor = Vendor;
    }
 
    public String getIP(){
@@ -22,5 +22,10 @@ public class AuditElement {
    public String getVendor(){
       return this.Vendor;
    }
+
+//  public static void main(String [ ] args){
+//     AuditElement lala = new AuditElement("192.168.0.0.1");
+//     System.out.println("Vendor: " + lala.getVendor());
+//  }
 }
 
