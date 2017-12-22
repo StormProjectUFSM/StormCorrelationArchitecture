@@ -1,6 +1,6 @@
 package storm.starter.AlgorithmBase;
 
-import java.lang.Math;
+import java.util.Random;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -16,20 +16,30 @@ public class AuditElement {
    public AuditElement(String IP){
       this.IP = IP;
       this.MAC = this.ARP();
-      this.Vendor = this.MACVendor();
+      this.Vendor = this.LocalMACVendor();
    }
 
    private String ARP(){
-        Integer Second = (int) (Math.random() * 26);
-        Integer Third = (int) (Math.random() * 26);
+	Random Numbers = new Random();
+        Integer Second = Numbers.nextInt(2) + 10;
+        Integer Third = Numbers.nextInt(10) + 10;
         String MACTuple = "";
 
-        if (Second < 10) MACTuple += "0" + Second.toString() + ":";
-        else MACTuple += Second.toString() + ":";
-        if (Third < 10) MACTuple += "0" + Third.toString();
-        else MACTuple += Third.toString();
+	return "00:" + Second.toString() + ":" + Third.toString() + ":F5:FE:12:34:59";
+   }
 
-        return "00:" + MACTuple + ":F5:FE:12:34:59";
+   private String LocalMACVendor(){
+      String[] FirstVendors = {"INITIO CORPORATION", "Cisco Systems, Inc", "PROCESSOR SYSTEMS (I) PVT LTD", "Kontron America, Inc.", "Cisco Systems, Inc", "OOmon Inc.", "T.SQWARE", "Bosch Access Systems GmbH", "Broadcom", "SIRONA DENTAL SYSTEMS GmbH & Co. KG"};
+      String[] SecondVendors = {"Maxanna Technology Co., Ltd.", "Intel Corporation", "Honeywell CMSS", "Fraunhofer FOKUS", "EverFocus Electronics Corp.", "EPIN Technologies, Inc.", "COTEAU VERT CO., LTD.", "CESNET", "BLX IC Design Corp., Ltd.", "Solteras, Inc."};
+
+      String[] splittedMAC = this.MAC.split(":");
+      if (Integer.parseInt(splittedMAC[1]) == 10){
+	return FirstVendors[Integer.parseInt(splittedMAC[2]) - 10];
+      }
+      else{
+	return SecondVendors[Integer.parseInt(splittedMAC[2]) - 10];
+      }
+
    }
 
    private String MACVendor(){
