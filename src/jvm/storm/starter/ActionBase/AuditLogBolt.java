@@ -7,14 +7,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import java.lang.Math;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import storm.starter.AlgorithmBase.PoliticsXML;
 import storm.starter.AlgorithmBase.CorrelationXML;
 import storm.starter.AlgorithmBase.AuditElement;
@@ -49,35 +41,6 @@ public class AuditLogBolt implements IRichBolt {
       this.collector = collector;
    }
 
-   private String ARP(){
-        Integer Second = (int) (Math.random() * 26);
-        Integer Third = (int) (Math.random() * 26);
-        String MACTuple = "";
-
-        if (Second < 10) MACTuple += "0" + Second.toString() + ":";
-        else MACTuple += Second.toString() + ":";
-        if (Third < 10) MACTuple += "0" + Third.toString();
-        else MACTuple += Third.toString();
-
-        return "00:" + MACTuple + ":F5:FE:12:34:59";
-   }
-
-   private String MACVendor(String MAC){
-      try{
-      URL url = new URL("http://api.macvendors.com/" + MAC);
-      HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-      conn.setRequestMethod("GET");
-      BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-      String gotVendor = rd.readLine();
-      rd.close();
-      return gotVendor;
-      }
-      catch (Exception e) {
-        return "Request Problem";
-      }
-   }
-
-
    @Override
    public void execute(Tuple tuple) {
      try{
@@ -93,15 +56,11 @@ public class AuditLogBolt implements IRichBolt {
 	      String[] packetData = packet.split(",");
 	      if (!consideredIPs.contains(packetData[0])){
 		consideredIPs.add(packetData[0]);
-		String gMAC = this.ARP();
-		String gVendor = this.MACVendor(gMAC);
-		auditedIPs.add(new AuditElement(packetData[0], gMAC, gVendor));
+		auditedIPs.add(new AuditElement(packetData[0]));
 	      }
 	      if (!consideredIPs.contains(packetData[1])){
                 consideredIPs.add(packetData[1]);
-		String gMAC = this.ARP();
-		String gVendor = this.MACVendor(gMAC);
-                auditedIPs.add(new AuditElement(packetData[1], gMAC, gVendor));
+                auditedIPs.add(new AuditElement(packetData[1]));
               }
            }
 	   for(AuditElement audited : auditedIPs){
